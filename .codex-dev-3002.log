@@ -1,0 +1,47 @@
+
+> emerald-solar-solutions-website@0.1.0 dev
+> next dev --port 3002
+
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3002
+- Network:       http://192.168.88.7:3002
+✓ Ready in 640ms
+
+ GET / 200 in 3.1s (next.js: 2.6s, application-code: 482ms)
+ GET / 200 in 303ms (next.js: 137ms, application-code: 166ms)
+ GET / 200 in 83ms (next.js: 6ms, application-code: 77ms)
+ GET / 200 in 184ms (next.js: 6ms, application-code: 178ms)
+ GET / 200 in 117ms (next.js: 5ms, application-code: 112ms)
+ GET / 200 in 251ms (next.js: 116ms, application-code: 135ms)
+ GET / 200 in 81ms (next.js: 6ms, application-code: 74ms)
+ GET / 200 in 209ms (next.js: 94ms, application-code: 116ms)
+ GET / 200 in 71ms (next.js: 5ms, application-code: 66ms)
+ GET / 200 in 208ms (next.js: 7ms, application-code: 201ms)
+✓ Compiled in 67ms
+ GET / 200 in 512ms (next.js: 132ms, application-code: 381ms)
+ GET / 200 in 516ms (next.js: 196ms, application-code: 321ms)
+ GET / 200 in 261ms (next.js: 5ms, application-code: 257ms)
+ GET / 200 in 187ms (next.js: 8ms, application-code: 180ms)
+ GET / 200 in 137ms (next.js: 5ms, application-code: 131ms)
+ GET / 200 in 89ms (next.js: 10ms, application-code: 78ms)
+✓ Compiled in 39ms
+ GET / 200 in 436ms (next.js: 148ms, application-code: 288ms)
+ GET / 200 in 439ms (next.js: 98ms, application-code: 341ms)
+ GET / 200 in 245ms (next.js: 5ms, application-code: 240ms)
+ GET / 200 in 246ms (next.js: 69ms, application-code: 177ms)
+ GET / 200 in 125ms (next.js: 6ms, application-code: 119ms)
+ GET / 200 in 84ms (next.js: 6ms, application-code: 77ms)
+ GET / 200 in 276ms (next.js: 6ms, application-code: 270ms)
+ GET / 500 in 1743ms (next.js: 1460ms, application-code: 283ms)
+ GET / 500 in 70ms (next.js: 23ms, application-code: 46ms)
+ GET / 500 in 78ms (next.js: 58ms, application-code: 20ms)
+✓ Compiled in 45ms
+ GET / 200 in 128ms (next.js: 6ms, application-code: 121ms)
+ GET / 500 in 92ms (next.js: 79ms, application-code: 12ms)
+ GET / 500 in 28ms (next.js: 14ms, application-code: 14ms)
+ GET / 500 in 30ms (next.js: 19ms, application-code: 10ms)
+✓ Compiled in 37ms
+ GET / 200 in 433ms (next.js: 137ms, application-code: 296ms)
+✓ Compiled in 36ms
+ GET / 200 in 310ms (next.js: 141ms, application-code: 169ms)
+ GET / 200 in 84ms (next.js: 6ms, application-code: 78ms)
