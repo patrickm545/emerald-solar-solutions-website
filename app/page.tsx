@@ -35,7 +35,7 @@ const serviceCards = [
 const pricingCards = [
   {
     name: "Website Starter",
-    price: "From EUR750 setup",
+    price: "From €750 setup",
     includes: [
       "Solar landing page",
       "Grant qualification form",
@@ -44,7 +44,7 @@ const pricingCards = [
   },
   {
     name: "Lead Generation System",
-    price: "From EUR750/month + ad spend",
+    price: "From €750/month + ad spend",
     includes: [
       "Meta ads management",
       "Landing page optimisation",
@@ -53,7 +53,7 @@ const pricingCards = [
   },
   {
     name: "Full Growth System",
-    price: "From EUR1,500/month + ad spend",
+    price: "From €1,500/month + ad spend",
     includes: [
       "Website and funnel build",
       "AI-assisted outreach support",
