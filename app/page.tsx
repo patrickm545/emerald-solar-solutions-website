@@ -1,5 +1,6 @@
-import Link from "next/link";
+import Image from "next/image";
 import { ContactForm } from "@/components/contact-form";
+import { SiteLogo } from "@/components/site-logo";
 
 const calendlyUrl = "https://calendly.com/pmkenna10/introduction";
 
@@ -109,14 +110,30 @@ export default function Home() {
         <div className="absolute inset-x-0 top-0 -z-10 h-[48rem] bg-[radial-gradient(circle_at_top_left,_rgba(52,211,153,0.14),_transparent_26%),linear-gradient(180deg,_rgba(6,78,59,0.82)_0%,_rgba(15,23,42,0.96)_68%,_rgba(15,23,42,0)_100%)]" />
         <div className="mx-auto max-w-7xl px-6 pb-28 pt-6 lg:px-8">
           <header className="rounded-full border border-white/10 bg-slate-950/75 px-4 py-3 backdrop-blur">
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-              <Link
-                className="text-lg font-semibold tracking-[0.08em] text-white"
-                href="/"
-              >
-                Emerald Solar Solutions
-              </Link>
-              <nav aria-label="Primary" className="flex flex-wrap gap-3">
+            <div className="flex items-center justify-between gap-4">
+              <SiteLogo theme="dark" width={300} />
+              <details className="group relative lg:hidden">
+                <summary className="flex cursor-pointer list-none items-center justify-center rounded-full border border-white/15 bg-white/8 px-4 py-2 text-sm font-semibold text-white marker:content-none">
+                  Menu
+                </summary>
+                <nav
+                  aria-label="Mobile Primary"
+                  className="absolute right-0 top-[calc(100%+0.75rem)] z-20 w-56 rounded-[1.5rem] border border-white/10 bg-slate-950/95 p-3 shadow-[0_20px_40px_rgba(15,23,42,0.4)] backdrop-blur"
+                >
+                  <div className="flex flex-col gap-1">
+                    {navItems.map((item) => (
+                      <a
+                        key={item.href}
+                        className="rounded-2xl px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-white/10 hover:text-white"
+                        href={item.href}
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                </nav>
+              </details>
+              <nav aria-label="Primary" className="hidden flex-wrap gap-3 lg:flex">
                 {navItems.map((item) => (
                   <a
                     key={item.href}
@@ -167,18 +184,23 @@ export default function Home() {
             </div>
 
             <div className="relative">
-              <div className="rounded-[2rem] border border-white/10 bg-white/95 p-6 shadow-[0_24px_70px_rgba(15,23,42,0.45)] sm:p-8">
-                <div className="flex items-center justify-between border-b border-slate-200 pb-5">
+              <div className="rounded-[2rem] border border-emerald-200/10 bg-[#17353a]/95 p-6 shadow-[0_24px_70px_rgba(15,23,42,0.45)] sm:p-8">
+                <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-5">
                   <div>
                     <p className="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-700">
                       Lead flow snapshot
                     </p>
-                    <h2 className="mt-2 text-2xl font-semibold text-slate-950">
+                    <h2 className="mt-2 text-2xl font-semibold text-white">
                       Cleaner enquiries, faster follow-up
                     </h2>
                   </div>
-                  <div className="rounded-full bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-700">
-                    Book a Demo
+                  <div className="hidden sm:block">
+                    <Image
+                      alt="Emerald Solar Solutions icon"
+                      height={52}
+                      src="/emerald-mark.svg"
+                      width={52}
+                    />
                   </div>
                 </div>
 
@@ -221,8 +243,8 @@ export default function Home() {
               Most Solar Leads Are Missing Key Grant Information
             </h2>
           </div>
-          <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_24px_60px_rgba(15,23,42,0.08)]">
-            <p className="text-lg leading-8 text-slate-700">
+          <div className="rounded-[2rem] border border-emerald-200/10 bg-[#17353a] p-8 shadow-[0_24px_60px_rgba(15,23,42,0.08)]">
+            <p className="text-lg leading-8 text-slate-200">
               Many homeowners are interested in solar panels, but installers
               often receive incomplete enquiries with missing MPRNs, unclear
               eligibility, no install timeline, and no context around the SEAI
@@ -237,7 +259,7 @@ export default function Home() {
               ].map((item) => (
                 <li
                   key={item}
-                  className="rounded-[1.5rem] border border-slate-200 bg-slate-50 px-5 py-4 text-sm font-medium text-slate-800"
+                  className="rounded-[1.5rem] border border-white/10 bg-[#0f2529] px-5 py-4 text-sm font-medium text-slate-100"
                 >
                   {item}
                 </li>
@@ -307,48 +329,48 @@ export default function Home() {
           ].map((step, index) => (
             <article
               key={step}
-              className="flex h-full flex-col rounded-[1.8rem] border border-slate-200 bg-white p-6 shadow-[0_20px_45px_rgba(15,23,42,0.06)]"
+              className="flex h-full flex-col rounded-[1.8rem] border border-emerald-200/10 bg-[#17353a] p-6 shadow-[0_20px_45px_rgba(15,23,42,0.06)]"
             >
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-700">
                 Step {index + 1}
               </p>
-              <p className="mt-5 text-lg font-medium leading-8 text-slate-900">
+              <p className="mt-5 text-lg font-medium leading-8 text-slate-100">
                 {step}
               </p>
             </article>
           ))}
         </div>
 
-        <p className="mt-8 max-w-4xl text-base leading-8 text-slate-700">
+        <p className="mt-8 max-w-4xl text-base leading-8 text-slate-300">
           Where relevant, AI-assisted outreach and follow-up systems can help
           create additional opportunities and keep prospecting organised.
         </p>
       </section>
 
-      <section className="bg-white py-20" id="services">
+      <section className="bg-[#0f1f24] py-20" id="services">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="section-kicker">Services</p>
-            <h2 className="section-title">What We Can Build For You</h2>
+            <h2 className="section-title text-white">What We Can Build For You</h2>
           </div>
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {serviceCards.map((service) => (
               <article
                 key={service.title}
-                className="rounded-[1.8rem] border border-slate-200 bg-slate-50 p-6"
+                className="rounded-[1.8rem] border border-emerald-200/10 bg-[#17353a] p-6"
               >
-                <h3 className="text-xl font-semibold text-slate-950">
+                <h3 className="text-xl font-semibold text-white">
                   {service.title}
                 </h3>
-                <p className="mt-4 text-sm leading-7 text-slate-700">
+                <p className="mt-4 text-sm leading-7 text-slate-200">
                   {service.copy}
                 </p>
               </article>
             ))}
           </div>
 
-          <p className="mt-8 max-w-4xl text-base leading-8 text-slate-700">
+          <p className="mt-8 max-w-4xl text-base leading-8 text-slate-300">
             Meta ads are used to attract homeowner interest, while AI-assisted
             outreach can support business development, partnerships, and
             follow-up.
@@ -369,7 +391,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_25px_60px_rgba(15,23,42,0.08)]">
+          <div className="rounded-[2rem] border border-emerald-200/10 bg-[#17353a] p-8 shadow-[0_25px_60px_rgba(15,23,42,0.08)]">
             <ul className="grid gap-4">
               {[
                 "11-digit MPRN validation",
@@ -381,7 +403,7 @@ export default function Home() {
               ].map((feature) => (
                 <li
                   key={feature}
-                  className="rounded-[1.3rem] border border-emerald-100 bg-emerald-50/60 px-5 py-4 text-sm font-medium text-slate-800"
+                  className="rounded-[1.3rem] border border-emerald-300/15 bg-[#0f2529] px-5 py-4 text-sm font-medium text-slate-100"
                 >
                   {feature}
                 </li>
@@ -428,12 +450,15 @@ export default function Home() {
 
       <section className="py-20">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
-          <div className="rounded-[2rem] border border-slate-200 bg-white px-8 py-12 text-center shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
+          <div className="rounded-[2rem] border border-emerald-200/10 bg-[#17353a] px-8 py-12 text-center shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
+            <div className="flex justify-center">
+              <SiteLogo theme="light" width={360} />
+            </div>
             <p className="section-kicker justify-center">Demo</p>
-            <h2 className="section-title mx-auto max-w-2xl">
+            <h2 className="section-title mx-auto max-w-2xl text-white">
               Want To See How It Works?
             </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-700">
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-200">
               Book a quick walkthrough and we&apos;ll show you how a homeowner
               enquiry moves from form submission to email/SMS alert and admin
               dashboard review.
@@ -448,23 +473,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-20" id="faq">
+      <section className="bg-[#0f1f24] py-20" id="faq">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="section-kicker">FAQ</p>
-            <h2 className="section-title">Frequently Asked Questions</h2>
+            <h2 className="section-title text-white">Frequently Asked Questions</h2>
           </div>
 
           <div className="mt-10 grid gap-5 lg:grid-cols-2">
             {faqs.map((faq) => (
               <article
                 key={faq.question}
-                className="rounded-[1.8rem] border border-slate-200 bg-slate-50 p-6"
+                className="rounded-[1.8rem] border border-emerald-200/10 bg-[#17353a] p-6"
               >
-                <h3 className="text-lg font-semibold text-slate-950">
+                <h3 className="text-lg font-semibold text-white">
                   {faq.question}
                 </h3>
-                <p className="mt-3 text-sm leading-7 text-slate-700">
+                <p className="mt-3 text-sm leading-7 text-slate-200">
                   {faq.answer}
                 </p>
               </article>
@@ -506,11 +531,11 @@ export default function Home() {
 
 function InsightCard({ label, copy }: { label: string; copy: string }) {
   return (
-    <article className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
+    <article className="rounded-[1.5rem] border border-white/10 bg-[#0f2529] p-5">
       <p className="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-700">
         {label}
       </p>
-      <p className="mt-3 text-sm leading-7 text-slate-700">{copy}</p>
+      <p className="mt-3 text-sm leading-7 text-slate-200">{copy}</p>
     </article>
   );
 }
