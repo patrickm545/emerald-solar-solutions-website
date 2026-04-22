@@ -109,7 +109,7 @@ export default function Home() {
       <section className="relative isolate">
         <div className="absolute inset-x-0 top-0 -z-10 h-[48rem] bg-[radial-gradient(circle_at_top_left,_rgba(52,211,153,0.14),_transparent_26%),linear-gradient(180deg,_rgba(6,78,59,0.82)_0%,_rgba(15,23,42,0.96)_68%,_rgba(15,23,42,0)_100%)]" />
         <div className="mx-auto max-w-7xl px-6 pb-28 pt-6 lg:px-8">
-          <header className="rounded-full border border-white/10 bg-slate-950/75 px-4 py-3 backdrop-blur">
+          <header className="relative z-30 rounded-full border border-white/10 bg-slate-950/75 px-4 py-3 backdrop-blur">
             <div className="flex items-center justify-between gap-4">
               <SiteLogo theme="dark" width={300} />
               <details className="group relative lg:hidden">
@@ -118,7 +118,7 @@ export default function Home() {
                 </summary>
                 <nav
                   aria-label="Mobile Primary"
-                  className="absolute right-0 top-[calc(100%+0.75rem)] z-20 w-56 rounded-[1.5rem] border border-white/10 bg-slate-950/95 p-3 shadow-[0_20px_40px_rgba(15,23,42,0.4)] backdrop-blur"
+                  className="absolute right-0 top-[calc(100%+0.75rem)] z-50 w-56 rounded-[1.5rem] border border-white/10 bg-slate-950/95 p-3 shadow-[0_20px_40px_rgba(15,23,42,0.4)] backdrop-blur"
                 >
                   <div className="flex flex-col gap-1">
                     {navItems.map((item) => (
