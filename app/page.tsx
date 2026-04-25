@@ -3,6 +3,9 @@ import { ContactForm } from "@/components/contact-form";
 import { SiteLogo } from "@/components/site-logo";
 
 const calendlyUrl = "https://calendly.com/pmkenna10/introduction";
+const demoVideoSrc = encodeURI(
+  "/Qualify Solar Leads Faster With Smart Forms 😊.mp4",
+);
 
 const solutionCards = [
   "SEAI grant-focused landing page",
@@ -106,10 +109,9 @@ const navItems = [
 export default function Home() {
   return (
     <main className="overflow-x-hidden bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.12),_transparent_28%),linear-gradient(180deg,_#f3f8f6_0%,_#e7efeb_42%,_#f8fafc_100%)] text-slate-950">
-      <section className="relative isolate">
-        <div className="absolute inset-x-0 top-0 -z-10 h-[48rem] bg-[radial-gradient(circle_at_top_left,_rgba(52,211,153,0.14),_transparent_26%),linear-gradient(180deg,_rgba(6,78,59,0.82)_0%,_rgba(15,23,42,0.96)_68%,_rgba(15,23,42,0)_100%)]" />
-        <div className="mx-auto max-w-7xl px-6 pb-28 pt-6 lg:px-8">
-          <header className="relative z-30 rounded-full border border-white/10 bg-slate-950/75 px-4 py-3 backdrop-blur">
+      <div className="fixed inset-x-0 top-0 z-50 w-full px-6 pt-3 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <header className="relative z-30 rounded-full border border-white/10 bg-slate-950/78 px-4 py-3 shadow-[0_12px_30px_rgba(15,23,42,0.18)] backdrop-blur-xl supports-[backdrop-filter]:bg-slate-950/68">
             <div className="flex items-center justify-between gap-4">
               <SiteLogo theme="dark" width={300} />
               <details className="group relative lg:hidden">
@@ -146,7 +148,12 @@ export default function Home() {
               </nav>
             </div>
           </header>
+        </div>
+      </div>
 
+      <section className="relative isolate">
+        <div className="absolute inset-x-0 top-0 -z-10 h-[48rem] bg-[radial-gradient(circle_at_top_left,_rgba(52,211,153,0.14),_transparent_26%),linear-gradient(180deg,_rgba(6,78,59,0.82)_0%,_rgba(15,23,42,0.96)_68%,_rgba(15,23,42,0)_100%)]" />
+        <div className="mx-auto max-w-7xl px-6 pb-28 pt-28 lg:px-8 lg:pt-32">
           <div className="grid gap-14 pb-10 pt-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:pt-24">
             <div className="max-w-3xl rounded-[2rem] bg-slate-950/28 p-6 shadow-[0_24px_70px_rgba(15,23,42,0.18)] ring-1 ring-white/10 backdrop-blur-sm sm:p-8">
               <p className="inline-flex rounded-full border border-emerald-300/20 bg-emerald-300/10 px-4 py-2 text-sm font-semibold uppercase tracking-[0.26em] text-emerald-100">
@@ -303,7 +310,7 @@ export default function Home() {
       </section>
 
       <section
-        className="mx-auto max-w-7xl px-6 py-20 lg:px-8"
+        className="mx-auto max-w-7xl scroll-mt-28 px-6 py-20 lg:px-8 lg:scroll-mt-32"
         id="how-it-works"
       >
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -347,7 +354,10 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="bg-[#0f1f24] py-20" id="services">
+      <section
+        className="scroll-mt-28 bg-[#0f1f24] py-20 lg:scroll-mt-32"
+        id="services"
+      >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="section-kicker">Services</p>
@@ -411,9 +421,43 @@ export default function Home() {
             </ul>
           </div>
         </div>
+
+        <div className="mx-auto mt-10 max-w-7xl px-6 lg:px-8">
+          <div className="overflow-hidden rounded-[2rem] border border-emerald-200/10 bg-[#17353a] shadow-[0_24px_60px_rgba(15,23,42,0.08)]">
+            <div className="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
+              <div className="p-8 lg:p-10">
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-700">
+                  Form demo
+                </p>
+                <h3 className="mt-4 text-3xl font-semibold text-white">
+                  See the grant qualification form in action
+                </h3>
+                <p className="mt-5 max-w-2xl text-base leading-8 text-slate-200">
+                  This demo shows the qualification form homeowners complete to
+                  submit their MPRN, property details, supporting photos, and
+                  other grant-related information before your team follows up.
+                </p>
+              </div>
+              <div className="border-t border-white/10 bg-slate-950/70 p-4 lg:border-l lg:border-t-0 lg:p-6">
+                <video
+                  className="h-full w-full rounded-[1.5rem] bg-slate-950 object-cover"
+                  controls
+                  playsInline
+                  preload="metadata"
+                >
+                  <source src={demoVideoSrc} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section className="bg-slate-950 py-20 text-white" id="pricing">
+      <section
+        className="scroll-mt-28 bg-slate-950 py-20 text-white lg:scroll-mt-32"
+        id="pricing"
+      >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="section-kicker text-emerald-300">Pricing</p>
@@ -473,7 +517,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#0f1f24] py-20" id="faq">
+      <section
+        className="scroll-mt-28 bg-[#0f1f24] py-20 lg:scroll-mt-32"
+        id="faq"
+      >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="section-kicker">FAQ</p>
