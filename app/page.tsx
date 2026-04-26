@@ -2,9 +2,21 @@ import Image from "next/image";
 import { ContactForm } from "@/components/contact-form";
 import { SiteLogo } from "@/components/site-logo";
 
+type PricingCard = {
+  name: string;
+  price: string;
+  positioning: string;
+  includes: string[];
+  ctaLabel: string;
+  ctaHref: string;
+  featured?: boolean;
+  featuredLabel?: string;
+  inheritedScope?: string;
+};
+
 const calendlyUrl = "https://calendly.com/pmkenna10/introduction";
 const demoVideoSrc = encodeURI(
-  "/Qualify Solar Leads Faster With Smart Forms 😊.mp4",
+  "/Qualify Solar Leads Faster With Smart Forms \u{1F60A}.mp4",
 );
 
 const solutionCards = [
@@ -37,33 +49,61 @@ const serviceCards = [
 
 const pricingCards = [
   {
-    name: "Website Starter",
-    price: "From €750 setup",
+    name: "Grant Lead System",
+    price: "From \u20ac200/month",
+    positioning:
+      "Basic support system for solar installers who want better-qualified grant enquiries.",
     includes: [
-      "Solar landing page",
-      "Grant qualification form",
-      "Email and SMS lead alerts",
+      "Grant-focused lead form",
+      "MPRN and required field validation",
+      "Customer document/photo uploads",
+      "Instant email/SMS lead alerts",
+      "Admin dashboard",
+      "Application pack / submission prep view",
+      "Basic support",
     ],
+    ctaLabel: "Book a Demo",
+    ctaHref: "#contact",
   },
   {
     name: "Lead Generation System",
-    price: "From €750/month + ad spend",
+    positioning:
+      "Software plus Meta ads to help you generate and qualify more solar enquiries.",
+    inheritedScope: "Includes everything in Grant Lead System, plus:",
+    price: "From \u20ac500/month + ad spend",
     includes: [
-      "Meta ads management",
-      "Landing page optimisation",
-      "Lead tracking and reporting",
+      "Meta ads campaign setup",
+      "Ad creative/copy testing",
+      "Landing page/funnel optimisation",
+      "Lead tracking",
+      "Monthly optimisation",
+      "Basic reporting",
     ],
+    ctaLabel: "Book a Demo",
+    ctaHref: "#contact",
+    featured: true,
+    featuredLabel: "Recommended",
   },
   {
     name: "Full Growth System",
-    price: "From €1,500/month + ad spend",
+    positioning:
+      "Software, Meta ads, and cold outbound workflows managed using Smartlead.ai.",
+    inheritedScope:
+      "Includes everything in Grant Lead System and Lead Generation System, plus:",
+    price: "From \u20ac900/month + ad spend",
     includes: [
-      "Website and funnel build",
-      "AI-assisted outreach support",
-      "Grant tool and reporting",
+      "Smartlead.ai cold outbound setup",
+      "Cold email campaign copy",
+      "Prospect list preparation",
+      "Follow-up sequences",
+      "Reply tracking",
+      "Outreach optimisation",
+      "Monthly growth review",
     ],
+    ctaLabel: "Book a Demo",
+    ctaHref: "#contact",
   },
-];
+] satisfies PricingCard[];
 
 const faqs = [
   {
@@ -460,34 +500,78 @@ export default function Home() {
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="section-kicker text-emerald-300">Pricing</p>
+            <p className="section-kicker text-emerald-300">Packages</p>
             <h2 className="section-title text-white">
-              Simple Ways To Work Together
+              Three Packages Built Around Your Growth Stage
             </h2>
+            <p className="mt-6 text-lg leading-8 text-slate-300">
+              Start with a grant-focused qualification system, add Meta ads when
+              you want stronger inbound volume, and layer in outbound when you
+              need a broader growth engine.
+            </p>
           </div>
 
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
             {pricingCards.map((plan) => (
               <article
                 key={plan.name}
-                className="rounded-[1.8rem] border border-white/10 bg-white/5 p-7"
+                className={`flex h-full flex-col rounded-[1.8rem] border p-7 ${
+                  plan.featured
+                    ? "border-emerald-300/50 bg-[linear-gradient(180deg,_rgba(52,211,153,0.2)_0%,_rgba(255,255,255,0.08)_100%)] shadow-[0_24px_70px_rgba(16,185,129,0.16)]"
+                    : "border-white/10 bg-white/5"
+                }`}
               >
-                <h3 className="text-2xl font-semibold text-white">{plan.name}</h3>
-                <p className="mt-4 text-3xl font-semibold text-emerald-300">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="text-2xl font-semibold text-white">
+                      {plan.name}
+                    </h3>
+                    <p className="mt-4 text-base leading-7 text-slate-300">
+                      {plan.positioning}
+                    </p>
+                  </div>
+                  {plan.featured ? (
+                    <span className="rounded-full border border-emerald-300/25 bg-emerald-300/12 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-100">
+                      {plan.featuredLabel}
+                    </span>
+                  ) : null}
+                </div>
+                <p className="mt-6 text-3xl font-semibold text-emerald-300">
                   {plan.price}
                 </p>
-                <ul className="mt-6 space-y-3 text-sm leading-7 text-slate-300">
+                {plan.inheritedScope ? (
+                  <p className="mt-6 rounded-[1.3rem] border border-white/10 bg-slate-950/35 px-4 py-3 text-sm leading-6 text-slate-200">
+                    {plan.inheritedScope}
+                  </p>
+                ) : null}
+                <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+                  Included
+                </p>
+                <ul className="mt-4 flex-1 space-y-3 text-sm leading-7 text-slate-300">
                   {plan.includes.map((item) => (
-                    <li key={item}>{item}</li>
+                    <li key={item} className="flex gap-3">
+                      <span className="mt-2 h-2.5 w-2.5 flex-none rounded-full bg-emerald-300" />
+                      <span>{item}</span>
+                    </li>
                   ))}
                 </ul>
+                <a
+                  className={`mt-8 inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ${
+                    plan.featured
+                      ? "bg-emerald-300 text-slate-950 hover:bg-emerald-200"
+                      : "border border-white/15 bg-white/8 text-white hover:bg-white/14"
+                  }`}
+                  href={plan.ctaHref}
+                >
+                  {plan.ctaLabel}
+                </a>
               </article>
             ))}
           </div>
 
           <p className="mt-8 max-w-3xl text-sm leading-7 text-slate-300">
-            Final pricing depends on your current website, target counties, and
-            monthly lead goals.
+            Final pricing depends on your current setup, target counties, ad
+            budget, and monthly lead goals.
           </p>
         </div>
       </section>
@@ -545,7 +629,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-slate-950 py-20 text-white" id="contact">
+      <section
+        className="scroll-mt-28 bg-slate-950 py-20 text-white lg:scroll-mt-32"
+        id="contact"
+      >
         <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
           <div className="max-w-2xl">
             <p className="section-kicker text-emerald-300">Contact</p>
@@ -586,6 +673,7 @@ function InsightCard({ label, copy }: { label: string; copy: string }) {
     </article>
   );
 }
+
 
 
 
