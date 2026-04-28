@@ -23,6 +23,13 @@
 # misc
 .DS_Store
 *.pem
+*.db
+*.sqlite
+*.sqlite3
+*.log
+*.err
+tmp/
+uploads/
 
 # debug
 npm-debug.log*
@@ -30,8 +37,17 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env.*
+!.env.example
+
+# server-side runtime data
+storage/
 
 # vercel
 .vercel

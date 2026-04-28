@@ -2,72 +2,35 @@
 
 import type { FormEvent, HTMLAttributes } from "react";
 import { useState } from "react";
-
-type FormValues = {
-  name: string;
-  company: string;
-  email: string;
-  phone: string;
-  website: string;
-  message: string;
-};
-
-type FormErrors = Partial<Record<keyof FormValues, string>>;
-
-const initialValues: FormValues = {
-  name: "",
-  company: "",
-  email: "",
-  phone: "",
-  website: "",
-  message: "",
-};
-
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const websitePattern =
-  /^(https?:\/\/)?([\w-]+\.)+[\w-]{2,}(\/[^\s]*)?$/i;
-
-function validateForm(values: FormValues): FormErrors {
-  const errors: FormErrors = {};
-
-  if (!values.name.trim()) errors.name = "Please enter your name.";
-  if (!values.company.trim()) errors.company = "Please enter your company.";
-  if (!values.email.trim()) {
-    errors.email = "Please enter your email.";
-  } else if (!emailPattern.test(values.email)) {
-    errors.email = "Please enter a valid email address.";
-  }
-
-  if (!values.phone.trim()) errors.phone = "Please enter your phone number.";
-
-  if (!values.website.trim()) {
-    errors.website = "Please enter your website.";
-  } else if (!websitePattern.test(values.website)) {
-    errors.website = "Please enter a valid website URL.";
-  }
-
-  if (!values.message.trim()) {
-    errors.message = "Please tell us a little about your goals.";
-  } else if (values.message.trim().length < 20) {
-    errors.message = "Please add a bit more detail so we can prepare.";
-  }
-
-  return errors;
-}
+import {
+  type ContactFormErrors,
+  type ContactFormValues,
+  type PublicContactFormField,
+  emptyContactFormValues,
+  validateContactForm,
+} from "@/lib/contact-form";
 
 export function ContactForm() {
-  const [values, setValues] = useState<FormValues>(initialValues);
-  const [errors, setErrors] = useState<FormErrors>({});
+  const [values, setValues] = useState<ContactFormValues>(emptyContactFormValues);
+  const [errors, setErrors] = useState<ContactFormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  function updateField(field: keyof FormValues, value: string) {
+  function updateField(field: keyof ContactFormValues, value: string) {
     setValues((current) => ({ ...current, [field]: value }));
+    setSubmitError(null);
+
+    if (field === "consentCheck") {
+      return;
+    }
+
     setErrors((current) => ({ ...current, [field]: undefined }));
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const nextErrors = validateForm(values);
+    const nextErrors = validateContactForm(values);
 
     if (Object.keys(nextErrors).length > 0) {
       setErrors(nextErrors);
@@ -75,16 +38,49 @@ export function ContactForm() {
       return;
     }
 
-    const payload = {
-      ...values,
-      submittedAt: new Date().toISOString(),
-      source: "emerald-solar-solutions-demo-form",
-    };
+    setIsSubmitting(true);
+    setSubmitError(null);
 
-    console.info("Emerald Solar Solutions demo request", payload);
-    setIsSubmitted(true);
-    setErrors({});
-    setValues(initialValues);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      const body = (await response.json().catch(() => null)) as
+        | {
+            error?: string;
+            fieldErrors?: ContactFormErrors;
+          }
+        | null;
+
+      if (!response.ok) {
+        if (body?.fieldErrors) {
+          setErrors(body.fieldErrors);
+        }
+
+        setIsSubmitted(false);
+        setSubmitError(
+          body?.error ??
+            "We could not process your request right now. Please try again in a moment.",
+        );
+        return;
+      }
+
+      setIsSubmitted(true);
+      setErrors({});
+      setValues(emptyContactFormValues);
+    } catch {
+      setIsSubmitted(false);
+      setSubmitError(
+        "We could not send your request right now. Please check your connection and try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -107,13 +103,33 @@ export function ContactForm() {
         <div className="rounded-[1.5rem] border border-emerald-400/30 bg-emerald-500/10 p-5 text-emerald-50">
           <p className="text-lg font-semibold">Thanks, your request is in.</p>
           <p className="mt-2 text-sm leading-7 text-emerald-50/80">
-            We have logged the form safely in your browser for now and can wire
-            this to email, CRM, or a booking flow later.
+            Your request was sent through our protected server-side form flow.
           </p>
         </div>
       ) : null}
 
+      {submitError ? (
+        <div className="mt-6 rounded-[1.5rem] border border-rose-300/40 bg-rose-500/10 p-5 text-rose-100">
+          <p className="text-sm leading-7">{submitError}</p>
+        </div>
+      ) : null}
+
       <form className="mt-6 space-y-5" noValidate onSubmit={handleSubmit}>
+        <label
+          aria-hidden="true"
+          className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden"
+        >
+          Leave this field empty
+          <input
+            autoComplete="off"
+            name="consentCheck"
+            onChange={(event) => updateField("consentCheck", event.target.value)}
+            tabIndex={-1}
+            type="text"
+            value={values.consentCheck}
+          />
+        </label>
+
         <div className="grid gap-5 sm:grid-cols-2">
           <Field
             error={errors.name}
@@ -164,9 +180,7 @@ export function ContactForm() {
           </span>
           <textarea
             className={`min-h-36 w-full rounded-[1.2rem] border bg-white/5 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300 focus:bg-white/10 ${
-              errors.message
-                ? "border-rose-300/70"
-                : "border-white/10"
+              errors.message ? "border-rose-300/70" : "border-white/10"
             }`}
             name="message"
             onChange={(event) => updateField("message", event.target.value)}
@@ -186,10 +200,11 @@ export function ContactForm() {
             SEAI application or claim grant approval.
           </p>
           <button
-            className="inline-flex items-center justify-center rounded-full bg-emerald-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-emerald-300"
+            className="inline-flex items-center justify-center rounded-full bg-emerald-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-emerald-300 disabled:cursor-not-allowed disabled:bg-emerald-200"
+            disabled={isSubmitting}
             type="submit"
           >
-            Request Demo
+            {isSubmitting ? "Sending..." : "Request Demo"}
           </button>
         </div>
       </form>
@@ -201,8 +216,8 @@ type FieldProps = {
   error?: string;
   inputMode?: HTMLAttributes<HTMLInputElement>["inputMode"];
   label: string;
-  name: keyof FormValues;
-  onChange: (field: keyof FormValues, value: string) => void;
+  name: PublicContactFormField;
+  onChange: (field: keyof ContactFormValues, value: string) => void;
   placeholder?: string;
   type?: string;
   value: string;
