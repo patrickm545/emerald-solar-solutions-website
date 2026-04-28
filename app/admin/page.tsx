@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { AdminLogoutButton } from "@/components/admin-logout-button";
-import { getAdminSession } from "@/lib/admin-session";
 
-export default async function AdminPage() {
-  const session = await getAdminSession();
+export const dynamic = "force-dynamic";
+
+export default function AdminPage() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-[linear-gradient(180deg,_#f3f8f6_0%,_#e7efeb_42%,_#f8fafc_100%)] px-6 py-16 text-slate-950">
@@ -21,7 +21,7 @@ export default async function AdminPage() {
         </p>
         <div className="mt-8 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
           <p className="text-sm font-medium text-slate-700">
-            Signed in as: <span className="font-semibold">{session?.username ?? "admin"}</span>
+            Signed in with a valid protected admin session.
           </p>
         </div>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">

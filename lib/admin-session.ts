@@ -18,11 +18,16 @@ export type AdminSessionCookieOptions = {
 };
 
 export async function getAdminSession() {
-  const sessionSecret = getRequiredEnvValue("ADMIN_SESSION_SECRET");
   const cookieStore = await cookies();
   const sessionCookie = cookieStore.get(sessionCookieName)?.value;
 
   if (!sessionCookie) {
+    return null;
+  }
+
+  const sessionSecret = getOptionalEnvValue("ADMIN_SESSION_SECRET");
+
+  if (!sessionSecret) {
     return null;
   }
 
@@ -60,7 +65,12 @@ export function clearAdminSessionCookie() {
 }
 
 export function verifyAdminSessionCookie(value: string) {
-  const sessionSecret = getRequiredEnvValue("ADMIN_SESSION_SECRET");
+  const sessionSecret = getOptionalEnvValue("ADMIN_SESSION_SECRET");
+
+  if (!sessionSecret) {
+    return null;
+  }
+
   return parseAdminSessionCookie(value, sessionSecret);
 }
 
@@ -133,11 +143,17 @@ function safeEquals(left: string, right: string) {
 }
 
 function getRequiredEnvValue(name: string) {
-  const value = process.env[name]?.trim();
+  const value = getOptionalEnvValue(name);
 
   if (!value) {
     throw new Error(`Missing required environment variable: ${name}`);
   }
+
+  return value;
+}
+
+function getOptionalEnvValue(name: string) {
+  const value = process.env[name]?.trim();
 
   return value;
 }
