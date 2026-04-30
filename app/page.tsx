@@ -18,6 +18,8 @@ const calendlyUrl = "https://calendly.com/pmkenna10/introduction";
 const demoVideoSrc = encodeURI(
   "/Qualify Solar Leads Faster With Smart Forms \u{1F60A}.mp4",
 );
+const loomDemoEmbedUrl =
+  "https://www.loom.com/embed/44cd33fb180c41eb888069ef72af6ad3";
 
 const solutionCards = [
   "SEAI grant-focused landing page",
@@ -392,6 +394,25 @@ export default function Home() {
           Where relevant, AI-assisted outreach and follow-up systems can help
           create additional opportunities and keep prospecting organised.
         </p>
+
+        <div className="mt-10 overflow-hidden rounded-[1.8rem] border border-emerald-200/10 bg-[#17353a] p-4 shadow-[0_20px_45px_rgba(15,23,42,0.08)] sm:p-5">
+          <div className="mb-4 px-1 sm:mb-5">
+            <h3 className="text-2xl font-semibold text-white">
+              Watch The System In Action
+            </h3>
+          </div>
+          <div className="relative aspect-video overflow-hidden rounded-[1.5rem] bg-slate-950">
+            <iframe
+              allow="fullscreen; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              src={loomDemoEmbedUrl}
+              title="Emerald Solar Solutions system demo"
+            />
+          </div>
+        </div>
       </section>
 
       <section
