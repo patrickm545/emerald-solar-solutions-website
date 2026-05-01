@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+node_modules/
 /.pnp
 .pnp.*
 .yarn/*
@@ -15,6 +16,7 @@
 
 # next.js
 /.next/
+.next/
 /out/
 
 # production
@@ -49,8 +51,13 @@ yarn-error.log*
 # server-side runtime data
 storage/
 
+# local lead/source exports
+seai_cleaned_for_drive.csv
+solar-pv-companies.csv
+
 # vercel
 .vercel
+.vercel/
 
 # typescript
 *.tsbuildinfo

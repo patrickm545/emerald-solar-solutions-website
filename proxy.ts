@@ -8,7 +8,7 @@ import {
 export function proxy(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
 
-  if (pathname === "/admin/login") {
+  if (pathname === "/admin/login" || pathname === "/api/admin/login") {
     return NextResponse.next();
   }
 
