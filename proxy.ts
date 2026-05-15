@@ -53,13 +53,6 @@ export function proxy(request: NextRequest) {
 export const config = {
   matcher: [
     "/admin/:path*",
-    "/installer-review-emerald/:path*",
-    "/dashboard/:path*",
     "/api/admin/:path*",
-    "/api/dashboard/:path*",
-    "/api/leads/:path*",
-    "/api/application-pack",
-    "/api/export/:path*",
-    "/api/submission-package/:path*",
   ],
 };

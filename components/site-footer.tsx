@@ -3,6 +3,7 @@ import { servicePages } from "@/lib/site-content";
 import { SiteLogo } from "@/components/site-logo";
 
 const coreLinks = [
+  { label: "About", href: "/about" },
   { label: "Features", href: "/features" },
   { label: "Quote Generator", href: "/quote-generator" },
   { label: "SEAI Grant Workflow", href: "/seai-grant-workflow" },
@@ -28,9 +29,13 @@ export function SiteFooter() {
         <div>
           <SiteLogo theme="light" width={320} />
           <p className="mt-6 max-w-xl text-sm leading-7 text-slate-300">
-            AI-powered sales and project management software for solar
-            installation companies in Ireland. Generate, qualify, quote, and
-            manage more homeowner leads from one workflow.
+            Emerald Solar Solutions is a software platform for solar
+            installation companies. AI-powered sales and workflow software for
+            solar installers in Ireland.
+          </p>
+          <p className="mt-4 max-w-xl text-sm font-semibold leading-7 text-emerald-200">
+            AI-powered sales and workflow software for solar installers in
+            Ireland.
           </p>
           <Link
             className="mt-7 inline-flex items-center justify-center rounded-full bg-emerald-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-amber-200"

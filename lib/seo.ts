@@ -49,6 +49,7 @@ export function createPageMetadata({
       card: "summary_large_image",
       title,
       description,
+      site: siteConfig.name,
       images: [absoluteUrl(siteConfig.defaultImage)],
     },
     robots: {
@@ -64,20 +65,35 @@ export function createOrganizationSchema() {
     "@type": "Organization",
     "@id": `${absoluteUrl("/")}#organization`,
     name: siteConfig.name,
+    alternateName: "Emerald Solar Solutions software platform",
     url: absoluteUrl("/"),
     logo: absoluteUrl("/emerald-logo-dark.png"),
     image: absoluteUrl(siteConfig.business.photoUrl ?? "/emerald-logo-dark.png"),
     description: siteConfig.description,
+    slogan: "AI-powered sales and project management software for solar installers.",
+    brand: {
+      "@type": "Brand",
+      name: siteConfig.name,
+      url: absoluteUrl("/"),
+      logo: absoluteUrl("/emerald-logo-dark.png"),
+    },
+    sameAs: siteConfig.sameAs,
     areaServed: {
       "@type": "Country",
       name: "Ireland",
     },
     knowsAbout: [
       "solar installer software",
+      "software platform for solar installers",
+      "SaaS platform for solar installers",
+      "solar sales software",
+      "solar installer workflow software",
+      "AI-assisted sales software",
       "AI-assisted lead generation",
-      "solar quote generator software",
-      "SEAI grant workflow software",
+      "quote generation software",
+      "SEAI workflow software",
       "solar project management software",
+      "project management software",
       "homeowner onboarding software",
     ],
     makesOffer: [
@@ -92,6 +108,7 @@ export function createOrganizationSchema() {
           "@id": `${absoluteUrl("/")}#software`,
           name: siteConfig.name,
           applicationCategory: "BusinessApplication",
+          applicationSubCategory: "Sales automation software",
           operatingSystem: "Web",
           description: siteConfig.description,
         },
@@ -130,10 +147,28 @@ export function createSoftwareApplicationSchema() {
     "@type": "SoftwareApplication",
     "@id": `${absoluteUrl("/")}#software`,
     name: siteConfig.name,
+    alternateName: "Emerald Solar Solutions SaaS platform",
     url: absoluteUrl("/"),
     applicationCategory: "BusinessApplication",
+    applicationSubCategory:
+      "AI-assisted sales software, quote generation software, SEAI workflow software, and project management software",
     operatingSystem: "Web",
     description: siteConfig.description,
+    brand: {
+      "@type": "Brand",
+      name: siteConfig.name,
+      url: absoluteUrl("/"),
+    },
+    featureList: [
+      "AI-assisted sales software",
+      "solar sales software",
+      "quote generation software",
+      "SEAI workflow software",
+      "project management software",
+      "solar installer workflow software",
+      "lead capture software",
+      "homeowner onboarding software",
+    ],
     audience: {
       "@type": "BusinessAudience",
       audienceType: "Solar installation companies in Ireland",
@@ -143,8 +178,8 @@ export function createSoftwareApplicationSchema() {
       name: "EUR500/month Solar Growth Software Package",
       price: "500",
       priceCurrency: "EUR",
-      description:
-        "AI-assisted sales workflow, quote generator, SEAI grant streamline form, project management tools, lead capture system, free professional website, and onboarding support.",
+    description:
+        "AI-assisted sales software, quote generation software, SEAI workflow software, project management software, lead capture system, free professional website, and onboarding support.",
     },
     provider: {
       "@id": `${absoluteUrl("/")}#organization`,
@@ -249,10 +284,17 @@ export function createBreadcrumbSchema(
 }
 
 export const homepageMetadata = createPageMetadata({
-  title: "AI Sales Software for Solar Installers | Emerald Solar Solutions",
+  title: "AI Sales Software Platform for Solar Installers | Emerald Solar Solutions",
   description:
-    "Emerald Solar Solutions provides AI-assisted sales, quote generation, SEAI grant workflow, project management, and lead capture software for solar installers in Ireland.",
+    "Emerald Solar Solutions provides AI-assisted sales software, quote generation software, SEAI workflow software, project management software, and lead capture software for solar installers in Ireland.",
   path: "/",
+});
+
+export const aboutPageMetadata = createPageMetadata({
+  title: "About Emerald Solar Solutions Software",
+  description:
+    "Emerald Solar Solutions is an Irish software company building AI-assisted sales, quote generation, SEAI workflow, and project management tools for solar installation companies.",
+  path: "/about",
 });
 
 export const quotePageMetadata = createPageMetadata({

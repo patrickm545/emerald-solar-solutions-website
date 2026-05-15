@@ -16,8 +16,10 @@ import {
   createBreadcrumbSchema,
   createFaqSchema,
   createLocationServiceSchema,
+  createOrganizationSchema,
   createQuoteGeneratorServiceSchema,
   createServiceSchema,
+  createSoftwareApplicationSchema,
   getCoreSoftwarePages,
   homepageSchemas,
 } from "@/lib/seo";
@@ -35,32 +37,32 @@ const problemPoints = [
 const solutionPoints = [
   "Capture leads",
   "Qualify homeowners",
-  "Generate solar quotes",
-  "Manage SEAI grant forms",
-  "Track projects",
+  "Use quote generation software",
+  "Manage SEAI workflow software",
+  "Track projects in project management software",
   "Automate follow-up",
-  "Improve the sales workflow",
+  "Improve the solar installer workflow software",
 ];
 
 const featureCards = [
   {
     title: "AI-Assisted Lead Generation",
-    copy: "Capture better solar enquiries and help your team prioritise leads that are ready for a real conversation.",
+    copy: "Use AI-assisted sales software to capture better solar enquiries and help your team prioritise leads that are ready for a real conversation.",
     href: "/ai-sales",
   },
   {
     title: "Solar Quote Generator",
-    copy: "Collect homeowner details, estimate system size and savings, and prepare better sales calls.",
+    copy: "Use quote generation software to collect homeowner details, estimate system size and savings, and prepare better sales calls.",
     href: "/quote-generator",
   },
   {
     title: "SEAI Grant Streamline Form",
-    copy: "Gather grant-related details earlier and reduce missing information before admin work begins.",
+    copy: "Use SEAI workflow software to gather grant-related details earlier and reduce missing information before admin work begins.",
     href: "/seai-grant-workflow",
   },
   {
     title: "Project Management Dashboard",
-    copy: "Track lead, quote, survey, installation, grant paperwork, and customer communication status.",
+    copy: "Track lead, quote, site visit, project, grant paperwork, and customer communication status in project management software.",
     href: "/project-management",
   },
   {
@@ -81,10 +83,10 @@ const featureCards = [
 ];
 
 const packageItems = [
-  "AI-assisted sales workflow",
-  "Solar quote generator",
-  "SEAI grant streamline form",
-  "Project management tools",
+  "AI-assisted sales software",
+  "Solar quote generation software",
+  "SEAI workflow software",
+  "Project management software",
   "Lead capture system",
   "Free professional website",
   "Onboarding support",
@@ -109,9 +111,10 @@ export function HomePage() {
                   AI-Powered Sales Software for Solar Installers
                 </h1>
                 <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-100 sm:text-xl">
-                  Generate better solar leads, qualify homeowners faster, create
-                  quotes, streamline SEAI grant forms, and manage projects from
-                  one simple system.
+                  Emerald Solar Solutions helps solar businesses generate
+                  better solar leads, qualify homeowners faster, use quote
+                  generation software, streamline SEAI workflow software, and
+                  manage projects from one simple SaaS platform.
                 </p>
                 <p className="mt-6 max-w-2xl rounded-2xl border border-amber-200/25 bg-amber-200/10 px-5 py-4 text-sm font-semibold leading-6 text-amber-100">
                   Free professional website included when you sign up to the
@@ -152,10 +155,10 @@ export function HomePage() {
                 </div>
                 <div className="mt-6 grid gap-4">
                   {[
-                    "AI lead capture",
-                    "Quote generator",
-                    "SEAI workflow",
-                    "Project management",
+                    "AI-assisted sales software",
+                    "Quote generation software",
+                    "SEAI workflow software",
+                    "Project management software",
                   ].map((highlight) => (
                     <div
                       className="rounded-[1.35rem] border border-white/10 bg-[#0f2529] px-5 py-4 text-sm font-semibold text-slate-100"
@@ -169,6 +172,44 @@ export function HomePage() {
                   Built for solar installation companies in Ireland. Not a
                   direct homeowner solar service.
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+            <div>
+              <p className="section-kicker">About The Software Company</p>
+              <h2 className="section-title">
+                Emerald Solar Solutions Builds Workflow Software For Solar
+                Installers
+              </h2>
+            </div>
+            <div className="rounded-[2rem] border border-emerald-200/10 bg-[#17353a] p-8 shadow-[0_24px_60px_rgba(15,23,42,0.08)]">
+              <p className="text-lg leading-8 text-slate-200">
+                Emerald Solar Solutions is an Irish software company building
+                AI-assisted sales, quote generation, SEAI workflow, and project
+                management tools for solar installation companies. The mission
+                is to help solar installers scale by reducing admin, automating
+                repeat workflow steps, and giving sales teams a cleaner way to
+                manage leads and projects.
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                {[
+                  { href: "/about", label: "About Emerald Solar Solutions" },
+                  { href: "/features", label: "Explore Features" },
+                  { href: "/pricing", label: "View Pricing" },
+                  { href: "/quote-generator", label: "Quote Generator" },
+                ].map((item) => (
+                  <Link
+                    className="inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                    href={item.href}
+                    key={item.href}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
@@ -353,6 +394,11 @@ function ProductPage({
               <p className="mt-6 text-lg leading-8 text-slate-700">
                 {service.summary}
               </p>
+              <p className="mt-5 text-base leading-7 text-slate-600">
+                As a SaaS platform for solar installers, Emerald Solar
+                Solutions keeps the software focused on sales teams, admin
+                workflows, and project visibility for solar businesses.
+              </p>
             </div>
             <FeatureList items={service.benefits} />
           </div>
@@ -451,8 +497,8 @@ export function LocationPage({ location }: { location: LocationPageContent }) {
               </h2>
               <p className="mt-6 text-lg leading-8 text-slate-700">
                 This page is for solar installation companies, not homeowners
-                looking for direct panel installation. Emerald Solar Solutions
-                helps your team manage the enquiries you generate in this area.
+                looking for solar quotes. Emerald Solar Solutions helps your
+                team manage the enquiries you generate in this area.
               </p>
             </div>
             <FeatureList items={solutionPoints} />
@@ -505,9 +551,11 @@ export function ContactPage() {
                 Show Us Your Installer Workflow
               </h2>
               <p className="mt-6 text-lg leading-8 text-slate-300">
-                We will use your company details, install volume, website
-                status, and main interest to shape a focused demo around your
-                lead generation, quote, SEAI, and project management needs.
+                Emerald Solar Solutions will use your company details, install
+                volume, website status, and main interest to shape a focused
+                demo around your AI-assisted sales software, quote generation
+                software, SEAI workflow software, and project management
+                software needs.
               </p>
               <div className="mt-8 grid gap-4">
                 {packageItems.map((item) => (
@@ -627,9 +675,10 @@ function PricingSection() {
             €500/month Solar Growth Software Package
           </h2>
           <p className="mt-6 text-lg leading-8 text-slate-700">
-            A practical monthly package for installer companies that need
-            better lead generation, qualification, quote preparation, SEAI
-            workflow visibility, and project management.
+            Emerald Solar Solutions is a practical monthly SaaS platform for
+            installer companies that need better lead generation,
+            qualification, quote generation software, SEAI workflow software,
+            and project management software.
           </p>
           <p className="mt-6 text-sm leading-7 text-slate-600">
             Final setup may depend on your current website, sales process, and
@@ -659,6 +708,106 @@ function PricingSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+export function AboutPage() {
+  return (
+    <>
+      <JsonLd data={createOrganizationSchema()} />
+      <JsonLd data={createSoftwareApplicationSchema()} />
+      <JsonLd
+        data={createBreadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
+      <MarketingShell>
+        <PageHero
+          kicker="About Emerald Solar Solutions"
+          points={[
+            "Irish software company",
+            "SaaS platform for solar installers",
+            "AI-assisted sales and workflow automation",
+          ]}
+          primaryHref="/contact"
+          primaryLabel="Book a Software Demo"
+          secondaryHref="/features"
+          secondaryLabel="Explore Features"
+          title="AI-Powered Workflow Software For Solar Installers"
+        >
+          Emerald Solar Solutions is an Irish software company building
+          AI-assisted sales, quote generation, SEAI workflow, and project
+          management tools for solar installation companies.
+        </PageHero>
+
+        <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <p className="section-kicker">Software Company</p>
+              <h2 className="section-title">
+                Built To Help Solar Installers Scale With Less Admin
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-slate-700">
+                Emerald Solar Solutions exists to help solar installers manage
+                more leads and projects without adding more disconnected tools,
+                spreadsheets, and manual follow-up.
+              </p>
+            </div>
+            <FeatureList
+              items={[
+                "AI-assisted sales software for faster lead response",
+                "Solar sales software for qualifying homeowner enquiries",
+                "Quote generation software for better prepared sales calls",
+                "SEAI workflow software for cleaner information collection",
+                "Project management software for team visibility",
+                "Solar installer workflow software that connects sales, admin, and delivery",
+              ]}
+            />
+          </div>
+        </section>
+
+        <section className="bg-slate-950 py-20 text-white">
+          <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
+            <div>
+              <p className="section-kicker text-emerald-300">Mission</p>
+              <h2 className="section-title text-white">
+                Help Solar Businesses Turn More Enquiries Into Managed Jobs
+              </h2>
+            </div>
+            <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8">
+              <p className="text-lg leading-8 text-slate-200">
+                The mission is simple: give solar installation companies a
+                focused SaaS platform that reduces admin, improves sales
+                follow-up, streamlines quote and SEAI workflows, and gives teams
+                clearer visibility from first enquiry to completed project.
+              </p>
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                {[
+                  { href: "/quote-generator", label: "Quote Generation Software" },
+                  { href: "/seai-grant-workflow", label: "SEAI Workflow Software" },
+                  { href: "/project-management", label: "Project Management Software" },
+                  { href: "/pricing", label: "SaaS Platform Pricing" },
+                ].map((item) => (
+                  <Link
+                    className="rounded-[1.3rem] border border-white/10 bg-[#0f2529] px-5 py-4 text-sm font-semibold text-slate-100 transition hover:border-emerald-300/40"
+                    href={item.href}
+                    key={item.href}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <ContactCta
+          copy="Talk to Emerald Solar Solutions about the software platform your solar business needs to generate, qualify, quote, and manage more work with less manual admin."
+          title="Build A Cleaner Solar Installer Workflow"
+        />
+      </MarketingShell>
+    </>
   );
 }
 

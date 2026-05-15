@@ -1,10 +1,17 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { AdminLogoutButton } from "@/components/admin-logout-button";
 
 export const dynamic = "force-dynamic";
+export const metadata: Metadata = {
+  title: "Admin",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function AdminPage() {
-
   return (
     <main className="flex min-h-screen items-center justify-center bg-[linear-gradient(180deg,_#f3f8f6_0%,_#e7efeb_42%,_#f8fafc_100%)] px-6 py-16 text-slate-950">
       <div className="w-full max-w-3xl rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_24px_60px_rgba(15,23,42,0.08)]">
@@ -15,9 +22,8 @@ export default function AdminPage() {
           Admin session active
         </h1>
         <p className="mt-4 text-base leading-8 text-slate-600">
-          This repository does not currently include the full installer dashboard
-          or lead-management screens, but the admin route namespace is now
-          protected by a signed server-side session.
+          This private area is reserved for site administration and is protected
+          by a signed server-side session.
         </p>
         <div className="mt-8 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
           <p className="text-sm font-medium text-slate-700">

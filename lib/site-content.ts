@@ -60,8 +60,12 @@ export const siteConfig = {
   name: "Emerald Solar Solutions",
   url: getSiteUrl(),
   description:
-    "Emerald Solar Solutions provides AI-assisted sales, quote generation, SEAI grant workflow, project management, and lead capture software for solar installers in Ireland.",
+    "Emerald Solar Solutions is an Irish software company providing an AI-powered SaaS platform for solar installers, including sales software, quote generation software, SEAI workflow software, project management software, and lead capture tools.",
   defaultImage: "/emerald-logo-dark.png",
+  sameAs: [
+    "https://www.linkedin.com/company/emerald-solar-solutions",
+    "https://x.com/emeraldsolarai",
+  ],
   business: {
     phone: readOptionalPublicEnv("NEXT_PUBLIC_BUSINESS_PHONE"),
     email: readOptionalPublicEnv("NEXT_PUBLIC_BUSINESS_EMAIL"),
@@ -78,19 +82,19 @@ export const servicePages = [
   {
     slug: "features",
     navTitle: "Features",
-    metaTitle: "Solar Installer Software Features",
+    metaTitle: "Solar Installer Workflow Software Features",
     metaDescription:
-      "Explore AI-assisted lead generation, solar quote software, SEAI grant workflow tools, project management, homeowner onboarding, and follow-up automation for Irish solar installers.",
-    kicker: "Platform features",
+      "Explore the Emerald Solar Solutions SaaS platform for solar installers, including AI-assisted sales software, quote generation software, SEAI workflow software, project management software, and homeowner onboarding.",
+    kicker: "Software platform features",
     h1: "Software Built Around The Solar Installer Sales Workflow",
     intro:
-      "Emerald Solar Solutions brings lead capture, AI-assisted qualification, quote generation, SEAI grant form collection, project tracking, and homeowner onboarding into one practical system for Irish solar installation companies.",
+      "Emerald Solar Solutions brings lead capture, AI-assisted qualification, quote generation software, SEAI workflow software, project management software, and homeowner onboarding into one practical SaaS platform for Irish solar installation companies.",
     summary:
-      "The platform is designed to reduce admin, speed up follow-up, and give your sales and operations team one clearer place to manage homeowner leads from first enquiry to booked job.",
+      "The Emerald Solar Solutions software platform is designed to reduce admin, speed up follow-up, and give your sales and operations team one clearer place to manage homeowner leads from first enquiry to booked job.",
     heroPoints: [
       "AI-assisted lead generation",
-      "Solar quote generator software",
-      "Project and SEAI workflow visibility",
+      "Solar sales software and quote generation software",
+      "Project management software and SEAI workflow visibility",
     ],
     benefits: [
       "Capture enquiries from your website and route them into your sales workflow",
@@ -130,9 +134,9 @@ export const servicePages = [
     kicker: "Quote generator software",
     h1: "Solar Quote Generator Software For Installers",
     intro:
-      "Give your sales team a structured way to capture homeowner details, estimate system size, estimate savings, and prepare better sales conversations before a survey or final proposal.",
+      "Give your sales team structured quote generation software to capture homeowner details, estimate system size, estimate savings, and prepare better sales conversations before a technical review or final proposal.",
     summary:
-      "The quote generator helps installers turn loose enquiries into clearer opportunities by collecting the information your team needs before the first serious sales call.",
+      "The Emerald Solar Solutions quote generation software helps installers turn loose enquiries into clearer opportunities by collecting the information your team needs before the first serious sales call.",
     heroPoints: [
       "Capture homeowner details",
       "Estimate system size and savings",
@@ -143,7 +147,7 @@ export const servicePages = [
       "Pre-qualify leads so your sales team can prioritise the best opportunities",
       "Estimate system size and savings ranges without presenting them as final quotes",
       "Collect photos, files, or notes needed for a better follow-up conversation",
-      "Route quote requests into your wider sales and project workflow",
+      "Route quote requests into your wider solar installer workflow software",
     ],
     process: [
       "A homeowner lead completes your branded quote flow",
@@ -171,13 +175,13 @@ export const servicePages = [
     navTitle: "SEAI Grant Workflow",
     metaTitle: "SEAI Grant Workflow Software for Solar Installers | Emerald Solar Solutions",
     metaDescription:
-      "SEAI grant workflow software for solar installers. Collect homeowner details, reduce missing information, check grant readiness, and prepare cleaner internal application workflows.",
+      "SEAI workflow software for solar installers. Collect homeowner details, reduce missing information, check grant readiness, and prepare cleaner internal application workflows.",
     kicker: "SEAI workflow software",
     h1: "SEAI Grant Workflow Software",
     intro:
-      "Reduce back-and-forth around SEAI grant information by collecting homeowner details, checking readiness, and keeping grant paperwork status visible alongside each lead or project.",
+      "Use SEAI workflow software to reduce back-and-forth around grant information by collecting homeowner details, checking readiness, and keeping paperwork status visible alongside each lead or project.",
     summary:
-      "The workflow helps your team gather cleaner information earlier. It does not guarantee SEAI approval, but it can reduce missing details and make your admin process easier to manage.",
+      "The Emerald Solar Solutions SEAI workflow software helps your team gather cleaner information earlier. It does not guarantee SEAI approval, but it can reduce missing details and make your admin process easier to manage.",
     heroPoints: [
       "Collect homeowner details",
       "Reduce missing information",
@@ -216,21 +220,21 @@ export const servicePages = [
     navTitle: "Project Management",
     metaTitle: "Project Management Software for Solar Installers | Emerald Solar Solutions",
     metaDescription:
-      "Project management software for solar installers. Track leads, quote status, surveys, installation status, SEAI paperwork, customer communication, and team visibility.",
+      "Project management software for solar installers. Track leads, quote status, site visits, project status, SEAI paperwork, customer communication, and team visibility.",
     kicker: "Project management",
     h1: "Project Management Software For Solar Installers",
     intro:
-      "Keep your team aligned across lead status, quote status, survey status, installation status, SEAI paperwork, customer communication, and next actions.",
+      "Keep your team aligned with solar installer workflow software for lead status, quote status, site visit status, project status, SEAI paperwork, customer communication, and next actions.",
     summary:
-      "Emerald Solar Solutions helps installers move away from messy spreadsheets and disconnected tools by giving sales and operations a clearer shared workflow.",
+      "Emerald Solar Solutions project management software helps installers move away from messy spreadsheets and disconnected tools by giving sales and operations a clearer shared workflow.",
     heroPoints: [
-      "Track quote and survey status",
-      "Manage installation and paperwork stages",
+      "Track quote and site visit status",
+      "Manage project and paperwork stages",
       "Improve team visibility",
     ],
     benefits: [
-      "Track each lead from new enquiry through quote, survey, booked install, and completion",
-      "See quote status, survey status, installation status, and grant paperwork status",
+      "Track each lead from new enquiry through quote, site visit, booked job, and completion",
+      "See quote status, site visit status, project status, and grant paperwork status",
       "Keep customer communication and internal notes in context",
       "Give sales, admin, and operations teams a shared view of next actions",
       "Reduce missed handovers between sales and project delivery",
@@ -261,13 +265,13 @@ export const servicePages = [
     navTitle: "AI Sales",
     metaTitle: "AI Sales Software for Solar Installers | Emerald Solar Solutions",
     metaDescription:
-      "AI-assisted sales software for solar installers in Ireland. Respond faster, qualify leads, support follow-up, improve sales scripts, and nurture homeowner enquiries.",
+      "AI-assisted sales software and solar sales software for installers in Ireland. Respond faster, qualify leads, support follow-up, improve sales scripts, and nurture homeowner enquiries.",
     kicker: "AI-assisted sales",
     h1: "AI-Assisted Lead Generation And Sales Follow-Up",
     intro:
       "Respond faster to solar enquiries, qualify homeowners more consistently, support follow-up, prepare sales scripts, and reduce missed opportunities without pretending AI can guarantee sales.",
     summary:
-      "The AI-assisted workflow helps your team prioritise the right leads, keep conversations moving, and avoid the silent drop-off that happens when follow-up depends on memory alone.",
+      "The Emerald Solar Solutions AI-assisted sales software helps your team prioritise the right leads, keep conversations moving, and avoid the silent drop-off that happens when follow-up depends on memory alone.",
     heroPoints: [
       "Faster lead response",
       "Better lead qualification",
@@ -306,23 +310,23 @@ export const servicePages = [
     navTitle: "Pricing",
     metaTitle: "Solar Installer Software Pricing | Emerald Solar Solutions",
     metaDescription:
-      "Solar installer software pricing from Emerald Solar Solutions. The EUR500/month Solar Growth Software Package includes AI sales workflow, quote generator, SEAI workflow, project management, lead capture, onboarding support, and a free professional website.",
+      "Solar installer software pricing from Emerald Solar Solutions. The EUR500/month SaaS platform package includes AI sales software, quote generation software, SEAI workflow software, project management software, lead capture, onboarding support, and a free professional website.",
     kicker: "Pricing",
     h1: "EUR500/month Solar Growth Software Package",
     intro:
-      "A focused monthly software package for Irish solar installers who want better lead capture, qualification, quote preparation, SEAI workflow management, and project visibility.",
+      "A focused monthly SaaS platform for Irish solar installers who want better lead capture, qualification, quote generation software, SEAI workflow software, project management software, and project visibility.",
     summary:
-      "The EUR500/month package includes AI-assisted sales workflow, quote generator, SEAI grant streamline form, project management tools, lead capture system, free professional website, and onboarding support.",
+      "The EUR500/month Emerald Solar Solutions package includes AI-assisted sales software, quote generation software, SEAI grant streamline form, project management software, lead capture system, free professional website, and onboarding support.",
     heroPoints: [
       "EUR500/month package",
       "Free professional website included",
       "Onboarding support included",
     ],
     benefits: [
-      "AI-assisted sales workflow",
-      "Solar quote generator",
-      "SEAI grant streamline form",
-      "Project management tools",
+      "AI-assisted sales software",
+      "Solar quote generation software",
+      "SEAI workflow software",
+      "Project management software",
       "Lead capture system",
       "Free professional website",
       "Onboarding support",
@@ -404,7 +408,7 @@ export const servicePages = [
     intro:
       "If homeowners are finding your company through solar panel searches, Emerald Solar Solutions helps turn those enquiries into qualified leads your sales team can follow up efficiently.",
     summary:
-      "This is not a solar installation service page. It explains how solar installers can use software to capture homeowner demand and manage the sales workflow more clearly.",
+      "This is a software use-case page for solar installers. It explains how solar businesses can use software to capture homeowner demand and manage the sales workflow more clearly.",
     heroPoints: ["Lead capture", "Qualification", "Quote workflow"],
     benefits: [
       "Capture homeowner solar panel enquiries through structured forms",
@@ -421,9 +425,9 @@ export const servicePages = [
     ],
     faqs: [
       {
-        question: "Does this page offer solar panel installation?",
+        question: "Is this page for solar installers?",
         answer:
-          "No. Emerald Solar Solutions provides software for solar installation companies, not direct solar panel installation for homeowners.",
+          "Yes. Emerald Solar Solutions provides software for solar installation companies that want a clearer lead capture, qualification, quote, and project workflow.",
       },
     ],
     relatedServices: ["features", "quote-generator", "ai-sales"],
@@ -491,9 +495,9 @@ export const servicePages = [
     ],
     faqs: [
       {
-        question: "Does Emerald Solar Solutions install commercial solar?",
+        question: "Is this commercial solar page a software use case?",
         answer:
-          "No. Emerald Solar Solutions provides software that helps solar installers manage commercial solar sales workflows.",
+          "Yes. Emerald Solar Solutions provides software that helps solar installers manage commercial solar sales workflows.",
       },
     ],
     relatedServices: ["features", "project-management", "ai-sales"],
@@ -561,9 +565,9 @@ export const servicePages = [
     ],
     faqs: [
       {
-        question: "Does Emerald Solar Solutions install EV chargers?",
+        question: "Is this EV charger page a software workflow use case?",
         answer:
-          "No. Emerald Solar Solutions provides software workflows for installer companies that manage solar and related homeowner enquiries.",
+          "Yes. Emerald Solar Solutions provides software workflows for installer companies that manage solar and related homeowner enquiries.",
       },
     ],
     relatedServices: ["features", "quote-generator", "project-management"],
@@ -702,7 +706,7 @@ export const homepageFaqs = [
   {
     question: "What does the EUR500/month package include?",
     answer:
-      "It includes AI-assisted sales workflow, quote generator, SEAI grant streamline form, project management tools, lead capture, a free professional website, and onboarding support.",
+      "It includes AI-assisted sales software, quote generation software, SEAI workflow software, project management software, lead capture, a free professional website, and onboarding support.",
   },
   {
     question: "Does the platform guarantee SEAI grant approval?",
@@ -718,6 +722,7 @@ export const homepageFaqs = [
 
 export const primaryNavItems = [
   { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
   { label: "Features", href: "/features" },
   { label: "Quote Generator", href: "/quote-generator" },
   { label: "SEAI Grant Workflow", href: "/seai-grant-workflow" },
@@ -737,6 +742,7 @@ export function getLocationPage(slug: string) {
 export function getIndexablePaths() {
   return [
     "/",
+    "/about",
     "/quote",
     ...servicePages.map((page) => `/${page.slug}`),
     "/contact",
