@@ -1,12 +1,23 @@
+export const mainInterestOptions = [
+  "AI lead generation",
+  "quote generator",
+  "SEAI grant workflow",
+  "project management",
+  "free website package",
+  "full software package",
+] as const;
+
 export const publicContactFormFieldNames = [
   "name",
-  "company",
+  "companyName",
   "email",
   "phone",
   "website",
-  "message",
+  "installsPerMonth",
+  "mainInterest",
 ] as const;
 
+export type MainInterestOption = (typeof mainInterestOptions)[number];
 export type PublicContactFormField = (typeof publicContactFormFieldNames)[number];
 
 export type ContactFormValues = Record<PublicContactFormField, string> & {
@@ -17,17 +28,19 @@ export type ContactFormErrors = Partial<Record<PublicContactFormField, string>>;
 
 export const emptyContactFormValues: ContactFormValues = {
   name: "",
-  company: "",
+  companyName: "",
   email: "",
   phone: "",
   website: "",
-  message: "",
+  installsPerMonth: "",
+  mainInterest: "",
   consentCheck: "",
 };
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const websitePattern = /^(https?:\/\/)?([\w-]+\.)+[\w-]{2,}(\/[^\s]*)?$/i;
 const phonePattern = /^[+\d()[\]\-\s]{7,24}$/;
+const websitePattern =
+  /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}(\/[^\s]*)?$/i;
 
 export function normalizeContactFormValues(
   value: unknown,
@@ -39,11 +52,12 @@ export function normalizeContactFormValues(
 
   return {
     name: normalizeText(source.name, 120),
-    company: normalizeText(source.company, 160),
+    companyName: normalizeText(source.companyName, 160),
     email: normalizeText(source.email, 160).toLowerCase(),
     phone: normalizeText(source.phone, 40),
-    website: normalizeText(source.website, 200),
-    message: normalizeMultilineText(source.message, 4000),
+    website: normalizeText(source.website, 220),
+    installsPerMonth: normalizeText(source.installsPerMonth, 80),
+    mainInterest: normalizeText(source.mainInterest, 120),
     consentCheck: normalizeText(source.consentCheck, 120),
   };
 }
@@ -54,7 +68,7 @@ export function validateContactForm(
   const errors: ContactFormErrors = {};
 
   if (!values.name) errors.name = "Please enter your name.";
-  if (!values.company) errors.company = "Please enter your company.";
+  if (!values.companyName) errors.companyName = "Please enter your company name.";
 
   if (!values.email) {
     errors.email = "Please enter your email.";
@@ -68,16 +82,18 @@ export function validateContactForm(
     errors.phone = "Please enter a valid phone number.";
   }
 
-  if (!values.website) {
-    errors.website = "Please enter your website.";
-  } else if (!websitePattern.test(values.website)) {
-    errors.website = "Please enter a valid website URL.";
+  if (values.website && !websitePattern.test(values.website)) {
+    errors.website = "Please enter a valid website or leave this blank.";
   }
 
-  if (!values.message) {
-    errors.message = "Please tell us a little about your goals.";
-  } else if (values.message.length < 20) {
-    errors.message = "Please add a bit more detail so we can prepare.";
+  if (!values.installsPerMonth) {
+    errors.installsPerMonth = "Please enter your approximate installs per month.";
+  }
+
+  if (!values.mainInterest) {
+    errors.mainInterest = "Please choose your main interest.";
+  } else if (!mainInterestOptions.includes(values.mainInterest as MainInterestOption)) {
+    errors.mainInterest = "Please choose one of the listed interests.";
   }
 
   return errors;
@@ -89,12 +105,4 @@ function normalizeText(value: unknown, maxLength: number): string {
   }
 
   return value.trim().slice(0, maxLength);
-}
-
-function normalizeMultilineText(value: unknown, maxLength: number): string {
-  if (typeof value !== "string") {
-    return "";
-  }
-
-  return value.replace(/\r\n/g, "\n").trim().slice(0, maxLength);
 }

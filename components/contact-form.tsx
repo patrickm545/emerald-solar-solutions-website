@@ -7,6 +7,7 @@ import {
   type ContactFormValues,
   type PublicContactFormField,
   emptyContactFormValues,
+  mainInterestOptions,
   validateContactForm,
 } from "@/lib/contact-form";
 
@@ -88,22 +89,23 @@ export function ContactForm() {
       <div className="mb-8 flex items-center justify-between gap-4">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-300">
-            Demo Request
+            Software Demo Request
           </p>
           <h3 className="mt-2 text-2xl font-semibold text-white">
-            Request a walkthrough
+            Tell us about your installer company
           </h3>
         </div>
         <div className="hidden rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-xs font-medium text-emerald-100 sm:block">
-          Response-ready lead system
+          Built for installers
         </div>
       </div>
 
       {isSubmitted ? (
         <div className="rounded-[1.5rem] border border-emerald-400/30 bg-emerald-500/10 p-5 text-emerald-50">
-          <p className="text-lg font-semibold">Thanks, your request is in.</p>
+          <p className="text-lg font-semibold">Thanks, your demo request is in.</p>
           <p className="mt-2 text-sm leading-7 text-emerald-50/80">
-            Your request was sent through our protected server-side form flow.
+            We received your installer software enquiry and will review your
+            company details before getting back to you.
           </p>
         </div>
       ) : null}
@@ -139,11 +141,11 @@ export function ContactForm() {
             value={values.name}
           />
           <Field
-            error={errors.company}
-            label="Company"
-            name="company"
+            error={errors.companyName}
+            label="Company name"
+            name="companyName"
             onChange={updateField}
-            value={values.company}
+            value={values.companyName}
           />
           <Field
             error={errors.email}
@@ -162,49 +164,63 @@ export function ContactForm() {
             onChange={updateField}
             value={values.phone}
           />
+          <Field
+            error={errors.website}
+            inputMode="url"
+            label="Website, if you have one"
+            name="website"
+            onChange={updateField}
+            placeholder="yourcompany.ie"
+            value={values.website}
+          />
+          <Field
+            error={errors.installsPerMonth}
+            inputMode="numeric"
+            label="Number of installs per month"
+            name="installsPerMonth"
+            onChange={updateField}
+            placeholder="e.g. 10-20"
+            value={values.installsPerMonth}
+          />
         </div>
-
-        <Field
-          error={errors.website}
-          inputMode="url"
-          label="Website"
-          name="website"
-          onChange={updateField}
-          placeholder="https://yourcompany.ie"
-          value={values.website}
-        />
 
         <label className="block">
           <span className="mb-2 block text-sm font-medium text-slate-100">
-            Message
+            Main interest
           </span>
-          <textarea
-            className={`min-h-36 w-full rounded-[1.2rem] border bg-white/5 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300 focus:bg-white/10 ${
-              errors.message ? "border-rose-300/70" : "border-white/10"
+          <select
+            className={`w-full rounded-[1.2rem] border bg-slate-900 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300 focus:bg-slate-900 ${
+              errors.mainInterest ? "border-rose-300/70" : "border-white/10"
             }`}
-            name="message"
-            onChange={(event) => updateField("message", event.target.value)}
-            placeholder="Tell us what counties you target, how many leads you want, or whether you need a full funnel or just the qualification form."
-            value={values.message}
-          />
-          {errors.message ? (
+            name="mainInterest"
+            onChange={(event) => updateField("mainInterest", event.target.value)}
+            value={values.mainInterest}
+          >
+            <option value="">Choose one</option>
+            {mainInterestOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          {errors.mainInterest ? (
             <span className="mt-2 block text-sm text-rose-200">
-              {errors.message}
+              {errors.mainInterest}
             </span>
           ) : null}
         </label>
 
         <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-md text-sm leading-6 text-slate-300">
-            This form is for demo requests only. It does not submit an official
-            SEAI application or claim grant approval.
+            This form is for solar installation companies enquiring about
+            Emerald Solar Solutions software.
           </p>
           <button
             className="inline-flex items-center justify-center rounded-full bg-emerald-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-emerald-300 disabled:cursor-not-allowed disabled:bg-emerald-200"
             disabled={isSubmitting}
             type="submit"
           >
-            {isSubmitting ? "Sending..." : "Request Demo"}
+            {isSubmitting ? "Sending..." : "Book a Software Demo"}
           </button>
         </div>
       </form>

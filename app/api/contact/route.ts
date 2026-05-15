@@ -11,7 +11,7 @@ import { enforceRateLimit } from "@/lib/rate-limit";
 const MAX_REQUESTS_PER_WINDOW = 5;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const storageDirectory = join(process.cwd(), "storage");
-const storageFile = join(storageDirectory, "contact-requests.jsonl");
+const storageFile = join(storageDirectory, "software-demo-requests.jsonl");
 const noStoreHeaders = {
   "Cache-Control": "no-store",
 };
@@ -105,11 +105,12 @@ export async function POST(request: NextRequest) {
       source: "emerald-solar-solutions-website",
       values: {
         name: values.name,
-        company: values.company,
+        companyName: values.companyName,
         email: values.email,
         phone: values.phone,
         website: values.website,
-        message: values.message,
+        installsPerMonth: values.installsPerMonth,
+        mainInterest: values.mainInterest,
       },
     };
 

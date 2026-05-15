@@ -66,13 +66,19 @@ textarea {
 .section-title {
   margin-top: 1rem;
   font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
-  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-size: 2.25rem;
   line-height: 1.08;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 
-@media (max-width: 640px) {
+@media (min-width: 640px) {
   .section-title {
-    letter-spacing: -0.03em;
+    font-size: 2.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-title {
+    font-size: 3.35rem;
   }
 }
