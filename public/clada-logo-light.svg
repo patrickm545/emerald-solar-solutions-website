@@ -1,0 +1,10 @@
+<svg width="780" height="160" viewBox="0 0 780 160" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">Clada Systems</title>
+  <rect x="8" y="24" width="112" height="112" rx="20" fill="#FFFFFF"/>
+  <path d="M83 52C73 44 57 43 46 51C32 61 28 80 37 95C46 110 64 116 80 108" stroke="#0B1F33" stroke-width="12" stroke-linecap="round"/>
+  <path d="M62 80H105" stroke="#1F4D3A" stroke-width="12" stroke-linecap="round"/>
+  <path d="M94 62L108 80L94 98" stroke="#1F4D3A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M150 42V118" stroke="#D9E1E5" stroke-width="2" stroke-opacity="0.7"/>
+  <text x="180" y="74" fill="#FFFFFF" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-size="48" font-weight="700" letter-spacing="0">Clada</text>
+  <text x="182" y="111" fill="#A7C3B2" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="0.18em">SYSTEMS</text>
+</svg>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-content";
 
@@ -6,12 +6,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.name,
   title: {
-    default: "AI Sales Software Platform for Solar Installers | Emerald Solar Solutions",
-    template: "%s | Emerald Solar Solutions",
+    default: "Software Built for Renewable Energy Installers | Clada Systems",
+    template: "%s | Clada Systems",
   },
   description: siteConfig.description,
   openGraph: {
-    title: "AI Sales Software Platform for Solar Installers | Emerald Solar Solutions",
+    title: "Software Built for Renewable Energy Installers | Clada Systems",
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Sales Software Platform for Solar Installers | Emerald Solar Solutions",
+    title: "Software Built for Renewable Energy Installers | Clada Systems",
     description: siteConfig.description,
     site: siteConfig.name,
   },
@@ -28,6 +28,12 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({

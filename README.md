@@ -1,6 +1,6 @@
-## Emerald Solar Solutions Website
+## Clada Systems Website
 
-Marketing website for Emerald Solar Solutions, built with the Next.js 16 App Router.
+Marketing website for Clada Systems, built with the Next.js 16 App Router.
 
 ## Security defaults
 
@@ -19,7 +19,7 @@ copy .env.example .env.local
 
 Then set strong values for:
 
-- `NEXT_PUBLIC_SITE_URL=https://emeraldsolarsolutions.ie` for production canonical URLs, sitemap URLs, robots.txt, Open Graph URLs, and JSON-LD IDs
+- `NEXT_PUBLIC_SITE_URL=https://cladasystems.com` for production canonical URLs, sitemap URLs, robots.txt, Open Graph URLs, and JSON-LD IDs
 - `ADMIN_USERNAME`
 - `ADMIN_PASSWORD`
 - `ADMIN_SESSION_SECRET`

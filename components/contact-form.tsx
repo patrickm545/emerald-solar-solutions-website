@@ -85,25 +85,25 @@ export function ContactForm() {
   }
 
   return (
-    <div className="rounded-[2rem] border border-white/10 bg-slate-950 p-6 shadow-[0_28px_80px_rgba(2,6,23,0.55)] sm:p-8">
+    <div className="rounded-lg border border-[#D9E1E5] bg-white p-6 shadow-[0_14px_34px_rgba(11,31,51,0.08)] sm:p-8">
       <div className="mb-8 flex items-center justify-between gap-4">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-300">
-            Software Demo Request
+          <p className="text-sm font-semibold uppercase text-[#1F4D3A]">
+            Software demonstration request
           </p>
-          <h3 className="mt-2 text-2xl font-semibold text-white">
+          <h3 className="mt-2 text-2xl font-semibold text-[#0B1F33]">
             Tell us about your installer company
           </h3>
         </div>
-        <div className="hidden rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-xs font-medium text-emerald-100 sm:block">
-          Built for installers
+        <div className="hidden rounded-lg border border-[#D9E1E5] bg-[#F7F8FA] px-4 py-2 text-xs font-medium text-slate-600 sm:block">
+          SolarGRANT Pro
         </div>
       </div>
 
       {isSubmitted ? (
-        <div className="rounded-[1.5rem] border border-emerald-400/30 bg-emerald-500/10 p-5 text-emerald-50">
+        <div className="rounded-lg border border-[#A7C3B2]/50 bg-[#F0F7F3] p-5 text-[#0B1F33]">
           <p className="text-lg font-semibold">Thanks, your demo request is in.</p>
-          <p className="mt-2 text-sm leading-7 text-emerald-50/80">
+          <p className="mt-2 text-sm leading-7 text-slate-700">
             We received your installer software enquiry and will review your
             company details before getting back to you.
           </p>
@@ -111,7 +111,7 @@ export function ContactForm() {
       ) : null}
 
       {submitError ? (
-        <div className="mt-6 rounded-[1.5rem] border border-rose-300/40 bg-rose-500/10 p-5 text-rose-100">
+        <div className="mt-6 rounded-lg border border-rose-200 bg-rose-50 p-5 text-rose-700">
           <p className="text-sm leading-7">{submitError}</p>
         </div>
       ) : null}
@@ -185,12 +185,12 @@ export function ContactForm() {
         </div>
 
         <label className="block">
-          <span className="mb-2 block text-sm font-medium text-slate-100">
+          <span className="mb-2 block text-sm font-medium text-slate-700">
             Main interest
           </span>
           <select
-            className={`w-full rounded-[1.2rem] border bg-slate-900 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300 focus:bg-slate-900 ${
-              errors.mainInterest ? "border-rose-300/70" : "border-white/10"
+            className={`w-full rounded-lg border bg-white px-4 py-3 text-base text-[#0B1F33] outline-none transition focus:border-[#1F4D3A] ${
+              errors.mainInterest ? "border-rose-300" : "border-[#D9E1E5]"
             }`}
             name="mainInterest"
             onChange={(event) => updateField("mainInterest", event.target.value)}
@@ -204,23 +204,23 @@ export function ContactForm() {
             ))}
           </select>
           {errors.mainInterest ? (
-            <span className="mt-2 block text-sm text-rose-200">
+            <span className="mt-2 block text-sm text-rose-600">
               {errors.mainInterest}
             </span>
           ) : null}
         </label>
 
         <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
-          <p className="max-w-md text-sm leading-6 text-slate-300">
-            This form is for solar installation companies enquiring about
-            Emerald Solar Solutions software.
+          <p className="max-w-md text-sm leading-6 text-slate-600">
+            This form is for renewable energy installation companies enquiring about
+            Clada Systems software.
           </p>
           <button
-            className="inline-flex items-center justify-center rounded-full bg-emerald-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-emerald-300 disabled:cursor-not-allowed disabled:bg-emerald-200"
+            className="inline-flex items-center justify-center rounded-lg bg-[#1F4D3A] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#173A2C] disabled:cursor-not-allowed disabled:bg-[#A7C3B2]"
             disabled={isSubmitting}
             type="submit"
           >
-            {isSubmitting ? "Sending..." : "Book a Software Demo"}
+            {isSubmitting ? "Sending..." : "Book a Demonstration"}
           </button>
         </div>
       </form>
@@ -251,12 +251,12 @@ function Field({
 }: FieldProps) {
   return (
     <label className="block">
-      <span className="mb-2 block text-sm font-medium text-slate-100">
+      <span className="mb-2 block text-sm font-medium text-slate-700">
         {label}
       </span>
       <input
-        className={`w-full rounded-[1.2rem] border bg-white/5 px-4 py-3 text-base text-white outline-none transition placeholder:text-slate-400 focus:border-emerald-300 focus:bg-white/10 ${
-          error ? "border-rose-300/70" : "border-white/10"
+        className={`w-full rounded-lg border bg-white px-4 py-3 text-base text-[#0B1F33] outline-none transition placeholder:text-slate-400 focus:border-[#1F4D3A] ${
+          error ? "border-rose-300" : "border-[#D9E1E5]"
         }`}
         inputMode={inputMode}
         name={name}
@@ -266,7 +266,7 @@ function Field({
         value={value}
       />
       {error ? (
-        <span className="mt-2 block text-sm text-rose-200">{error}</span>
+        <span className="mt-2 block text-sm text-rose-600">{error}</span>
       ) : null}
     </label>
   );

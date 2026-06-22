@@ -2,9 +2,9 @@ import { ContactPage } from "@/components/marketing-pages";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
-  title: "Book a Software Demo",
+  title: "Book a Demonstration",
   description:
-    "Book a demo of the Emerald Solar Solutions SaaS platform for solar installers, including AI-assisted sales software, quote generation software, SEAI workflow software, project management software, and the free website package.",
+    "Book a demonstration of SolarGRANT Pro from Clada Systems, the Irish software platform for renewable energy installer workflows.",
   path: "/contact",
 });
 

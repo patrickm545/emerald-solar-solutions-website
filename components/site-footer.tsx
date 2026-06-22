@@ -1,56 +1,47 @@
 import Link from "next/link";
-import { servicePages } from "@/lib/site-content";
 import { SiteLogo } from "@/components/site-logo";
 
-const coreLinks = [
-  { label: "About", href: "/about" },
-  { label: "Features", href: "/features" },
-  { label: "Quote Generator", href: "/quote-generator" },
-  { label: "SEAI Grant Workflow", href: "/seai-grant-workflow" },
-  { label: "Project Management", href: "/project-management" },
-  { label: "AI Sales", href: "/ai-sales" },
-  { label: "Pricing", href: "/pricing" },
+const platformLinks = [
+  { label: "SolarGRANT Pro", href: "/features" },
+  { label: "Quote Workflow", href: "/quote-generator" },
+  { label: "Grant Workflow", href: "/seai-grant-workflow" },
+  { label: "Sales Follow-Up", href: "/ai-sales" },
+  { label: "Installer Workflows", href: "/project-management" },
+  { label: "Website Intake", href: "/free-website" },
 ];
 
-const useCaseSlugs = new Set([
-  "solar-panels",
-  "domestic-solar",
-  "commercial-solar",
-  "battery-storage",
-  "ev-charger-installation",
-]);
+const companyLinks = [
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+  { label: "Book a Demonstration", href: "/contact" },
+];
 
 export function SiteFooter() {
-  const useCasePages = servicePages.filter((page) => useCaseSlugs.has(page.slug));
-
   return (
-    <footer className="bg-slate-950 px-6 py-14 text-white lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.35fr_0.8fr_0.85fr_0.8fr]">
+    <footer className="bg-[#0B1F33] px-6 py-14 text-white lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.3fr_0.9fr_0.8fr]">
         <div>
-          <SiteLogo theme="light" width={320} />
+          <SiteLogo theme="dark" width={300} />
           <p className="mt-6 max-w-xl text-sm leading-7 text-slate-300">
-            Emerald Solar Solutions is a software platform for solar
-            installation companies. AI-powered sales and workflow software for
-            solar installers in Ireland.
+            Clada Systems is an Irish software company building workflow
+            automation tools for renewable energy businesses. SolarGRANT Pro
+            helps installers manage leads, grant eligibility, quotations,
+            customer workflows, and AI-assisted sales follow-up.
           </p>
-          <p className="mt-4 max-w-xl text-sm font-semibold leading-7 text-emerald-200">
-            AI-powered sales and workflow software for solar installers in
-            Ireland.
+          <p className="mt-4 max-w-xl text-sm font-semibold leading-7 text-[#B8D0C2]">
+            Practical software for installer teams, not a homeowner installation service.
           </p>
-          <Link
-            className="mt-7 inline-flex items-center justify-center rounded-full bg-emerald-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-amber-200"
-            href="/contact"
-          >
-            Book a Software Demo
+          <Link className="button-primary mt-7" href="/contact">
+            Book a Demonstration
           </Link>
         </div>
 
         <nav aria-label="Software platform">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-300">
+          <p className="text-sm font-semibold uppercase text-[#A7C3B2]">
             Platform
           </p>
           <div className="mt-5 grid gap-3">
-            {coreLinks.map((item) => (
+            {platformLinks.map((item) => (
               <Link
                 className="text-sm text-slate-300 transition hover:text-white"
                 href={item.href}
@@ -62,46 +53,20 @@ export function SiteFooter() {
           </div>
         </nav>
 
-        <nav aria-label="Installer use cases">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-300">
-            Use Cases
+        <nav aria-label="Company">
+          <p className="text-sm font-semibold uppercase text-[#A7C3B2]">
+            Company
           </p>
           <div className="mt-5 grid gap-3">
-            {useCasePages.map((service) => (
+            {companyLinks.map((item) => (
               <Link
                 className="text-sm text-slate-300 transition hover:text-white"
-                href={`/${service.slug}`}
-                key={service.slug}
+                href={item.href}
+                key={item.href}
               >
-                {service.navTitle}
+                {item.label}
               </Link>
             ))}
-          </div>
-        </nav>
-
-        <nav aria-label="Contact">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-300">
-            Contact
-          </p>
-          <div className="mt-5 grid gap-3">
-            <Link
-              className="text-sm text-slate-300 transition hover:text-white"
-              href="/contact"
-            >
-              Book a Demo
-            </Link>
-            <Link
-              className="text-sm text-slate-300 transition hover:text-white"
-              href="/free-website-for-solar-installers"
-            >
-              Free Website Included
-            </Link>
-            <Link
-              className="text-sm text-slate-300 transition hover:text-white"
-              href="/pricing"
-            >
-              €500/month Package
-            </Link>
           </div>
         </nav>
       </div>

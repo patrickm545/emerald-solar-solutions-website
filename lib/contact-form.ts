@@ -1,10 +1,10 @@
 export const mainInterestOptions = [
-  "AI lead generation",
-  "quote generator",
-  "SEAI grant workflow",
-  "project management",
-  "free website package",
-  "full software package",
+  "Lead generation and follow-up",
+  "Quote generator",
+  "Grant workflow",
+  "Project tracking",
+  "Free website package",
+  "Full software package",
 ] as const;
 
 export const publicContactFormFieldNames = [

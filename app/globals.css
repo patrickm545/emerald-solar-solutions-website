@@ -1,10 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fcfb;
-  --foreground: #0f172a;
+  --background: #f7f8fa;
+  --foreground: #0b1f33;
   --color-panel: #ffffff;
-  --color-border: #dbe7e3;
+  --color-border: #d9e1e5;
+  --color-navy: #0b1f33;
+  --color-green: #1f4d3a;
 }
 
 @theme inline {
@@ -41,7 +43,7 @@ textarea {
 }
 
 ::selection {
-  background: rgba(16, 185, 129, 0.18);
+  background: rgba(31, 77, 58, 0.18);
 }
 
 .section-kicker {
@@ -50,9 +52,9 @@ textarea {
   gap: 0.65rem;
   font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.24em;
+  letter-spacing: 0;
   text-transform: uppercase;
-  color: #047857;
+  color: #1f4d3a;
 }
 
 .section-kicker::before {
@@ -65,20 +67,61 @@ textarea {
 
 .section-title {
   margin-top: 1rem;
-  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
-  font-size: 2.25rem;
-  line-height: 1.08;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 2.1rem;
+  line-height: 1.12;
   letter-spacing: 0;
 }
 
 @media (min-width: 640px) {
   .section-title {
-    font-size: 2.75rem;
+    font-size: 2.55rem;
   }
 }
 
 @media (min-width: 1024px) {
   .section-title {
-    font-size: 3.35rem;
+    font-size: 2.95rem;
   }
+}
+
+.button-primary,
+.button-secondary-dark,
+.button-primary-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  padding: 0.8rem 1.15rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.button-primary {
+  background: #1f4d3a;
+  color: #ffffff;
+}
+
+.button-primary:hover {
+  background: #173a2c;
+}
+
+.button-primary-light {
+  background: #1f4d3a;
+  color: #ffffff;
+}
+
+.button-primary-light:hover {
+  background: #173a2c;
+}
+
+.button-secondary-dark {
+  border: 1px solid #d9e1e5;
+  background: #ffffff;
+  color: #0b1f33;
+}
+
+.button-secondary-dark:hover {
+  border-color: #1f4d3a;
+  background: #f5f7f8;
 }

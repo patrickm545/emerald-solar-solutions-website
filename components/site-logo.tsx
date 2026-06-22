@@ -15,18 +15,18 @@ export function SiteLogo({
   width = 260,
 }: SiteLogoProps) {
   const src =
-    theme === "dark" ? "/emerald-logo-dark.svg" : "/emerald-logo-light.svg";
+    theme === "dark" ? "/clada-logo-light.svg" : "/clada-logo-dark.svg";
 
   return (
     <Link
-      aria-label="Emerald Solar Solutions home"
+      aria-label="Clada Systems home"
       className={`inline-flex items-center ${className}`.trim()}
       href={href}
     >
       <Image
         priority
-        alt="Emerald Solar Solutions logo"
-        height={Math.round(width * 0.209)}
+        alt="Clada Systems logo"
+        height={Math.round(width * (160 / 780))}
         src={src}
         width={width}
       />

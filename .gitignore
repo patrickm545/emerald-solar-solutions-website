@@ -62,3 +62,5 @@ solar-pv-companies.csv
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.vercel

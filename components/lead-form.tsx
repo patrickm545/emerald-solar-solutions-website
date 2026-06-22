@@ -202,7 +202,7 @@ export function LeadForm() {
 
         <div className="flex flex-col gap-4 border-b border-white/10 pb-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-300">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#A7C3B2]">
               Solar quote request
             </p>
             <h2 className="mt-2 text-2xl font-semibold">
@@ -217,7 +217,7 @@ export function LeadForm() {
             {[0, 1, 2].map((item) => (
               <span
                 className={`h-2.5 w-10 rounded-full ${
-                  item <= step ? "bg-emerald-300" : "bg-white/15"
+                  item <= step ? "bg-[#A7C3B2]" : "bg-white/15"
                 }`}
                 key={item}
               />
@@ -226,10 +226,10 @@ export function LeadForm() {
         </div>
 
         {isSubmitted ? (
-          <div className="mt-6 rounded-[1.35rem] border border-emerald-400/30 bg-emerald-500/10 p-5 text-emerald-50">
+          <div className="mt-6 rounded-[1.35rem] border border-[#A7C3B2]/40 bg-[#1F4D3A]/20 p-5 text-slate-50">
             <p className="text-lg font-semibold">Thanks, your quote request is in.</p>
-            <p className="mt-2 text-sm leading-7 text-emerald-50/80">
-              Emerald Solar Solutions will review the estimate details and follow up
+            <p className="mt-2 text-sm leading-7 text-slate-100/80">
+              Clada Systems will review the estimate details and follow up
               about the best next step.
             </p>
           </div>
@@ -270,7 +270,7 @@ export function LeadForm() {
             ) : null}
             {step < 2 ? (
               <button
-                className="inline-flex items-center justify-center rounded-full bg-emerald-300 px-5 py-3 text-sm font-semibold text-slate-950 hover:bg-amber-200"
+                className="inline-flex items-center justify-center rounded-full bg-[#1F4D3A] px-5 py-3 text-sm font-semibold text-white hover:bg-[#173A2C]"
                 onClick={goNext}
                 type="button"
               >
@@ -278,7 +278,7 @@ export function LeadForm() {
               </button>
             ) : (
               <button
-                className="inline-flex items-center justify-center rounded-full bg-emerald-300 px-5 py-3 text-sm font-semibold text-slate-950 hover:bg-amber-200 disabled:cursor-not-allowed disabled:bg-emerald-100"
+                className="inline-flex items-center justify-center rounded-full bg-[#1F4D3A] px-5 py-3 text-sm font-semibold text-white hover:bg-[#173A2C] disabled:cursor-not-allowed disabled:bg-[#A7C3B2]"
                 disabled={isSubmitting}
                 type="submit"
               >
@@ -423,7 +423,7 @@ function StepThree({
           Anything useful before the survey?
         </span>
         <textarea
-          className="min-h-28 w-full rounded-[1.2rem] border border-white/10 bg-white/5 px-4 py-3 text-base text-white outline-none placeholder:text-slate-400 focus:border-emerald-300 focus:bg-white/10"
+          className="min-h-28 w-full rounded-[1.2rem] border border-white/10 bg-white/5 px-4 py-3 text-base text-white outline-none placeholder:text-slate-400 focus:border-[#A7C3B2] focus:bg-white/10"
           onChange={(event) => updateField("note", event.target.value)}
           placeholder="Roof notes, timing, bills, battery questions, hot water diverter, or grant questions."
           value={values.note}
@@ -446,8 +446,8 @@ function EstimatePanel({
   ];
 
   return (
-    <aside className="rounded-[2rem] border border-emerald-200/10 bg-[#17353a] p-6 text-white shadow-[0_24px_70px_rgba(15,23,42,0.18)] sm:p-8">
-      <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-300">
+    <aside className="rounded-[2rem] border border-white/10 bg-[#0B1F33] p-6 text-white shadow-[0_24px_70px_rgba(15,23,42,0.18)] sm:p-8">
+      <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#A7C3B2]">
         Indicative estimate
       </p>
       <div className="mt-6 grid gap-4">
@@ -499,7 +499,7 @@ function SegmentedControl<Option extends string>({
           <button
             className={`rounded-full border px-4 py-3 text-sm font-semibold ${
               option.value === value
-                ? "border-emerald-300 bg-emerald-300 text-slate-950"
+                ? "border-[#A7C3B2] bg-[#A7C3B2] text-[#0B1F33]"
                 : "border-white/10 bg-white/5 text-slate-200 hover:bg-white/10"
             }`}
             key={option.value}
@@ -537,7 +537,7 @@ function TextField({
         {label}
       </span>
       <input
-        className={`w-full rounded-[1.2rem] border bg-white/5 px-4 py-3 text-base text-white outline-none placeholder:text-slate-400 focus:border-emerald-300 focus:bg-white/10 ${
+        className={`w-full rounded-[1.2rem] border bg-white/5 px-4 py-3 text-base text-white outline-none placeholder:text-slate-400 focus:border-[#A7C3B2] focus:bg-white/10 ${
           error ? "border-rose-300/70" : "border-white/10"
         }`}
         inputMode={inputMode}

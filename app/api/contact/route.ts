@@ -27,7 +27,7 @@ type ContactSubmissionRecord = {
   submittedAt: string;
   ipAddress: string;
   userAgent: string | null;
-  source: "emerald-solar-solutions-website";
+  source: "clada-systems-website";
   values: StoredContactFormValues;
 };
 
@@ -102,7 +102,7 @@ export async function POST(request: NextRequest) {
       submittedAt: new Date().toISOString(),
       ipAddress,
       userAgent: request.headers.get("user-agent"),
-      source: "emerald-solar-solutions-website",
+      source: "clada-systems-website",
       values: {
         name: values.name,
         companyName: values.companyName,

@@ -111,7 +111,7 @@ function Field({ error, label, onChange, type, value }: FieldProps) {
         {label}
       </span>
       <input
-        className={`w-full rounded-[1.2rem] border bg-slate-50 px-4 py-3 text-base text-slate-950 outline-none transition focus:border-emerald-500 ${
+        className={`w-full rounded-[1.2rem] border bg-slate-50 px-4 py-3 text-base text-slate-950 outline-none transition focus:border-[#1F4D3A] ${
           error ? "border-rose-400" : "border-slate-200"
         }`}
         onChange={(event) => onChange(event.target.value)}

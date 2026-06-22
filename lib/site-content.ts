@@ -3,6 +3,35 @@ export type FaqItem = {
   answer: string;
 };
 
+export type ProofItem = {
+  title: string;
+  caption: string;
+  src: string;
+  alt: string;
+};
+
+export type ProofSectionContent = {
+  kicker: string;
+  title: string;
+  intro: string;
+  items: ProofItem[];
+};
+
+export type DemoSectionContent = {
+  title: string;
+  intro: string;
+  thumbnail: string;
+  embedUrl?: string;
+  ctaLabel: string;
+  ctaHref: string;
+};
+
+export type InsightSection = {
+  title: string;
+  copy: string;
+  points: string[];
+};
+
 export type ProductPageContent = {
   slug: string;
   navTitle: string;
@@ -15,6 +44,9 @@ export type ProductPageContent = {
   heroPoints: string[];
   benefits: string[];
   process: string[];
+  proof: ProofSectionContent;
+  demo: DemoSectionContent;
+  insights: InsightSection[];
   faqs: FaqItem[];
   relatedServices: string[];
 };
@@ -31,7 +63,7 @@ export type LocationPageContent = {
   localSignals: string[];
 };
 
-const productionSiteUrl = "https://emeraldsolarsolutions.ie";
+const productionSiteUrl = "https://cladasystems.com";
 
 function readOptionalPublicEnv(name: string) {
   const value = process.env[name]?.trim();
@@ -57,15 +89,12 @@ export const publicBusinessPlaceholders = {
 };
 
 export const siteConfig = {
-  name: "Emerald Solar Solutions",
+  name: "Clada Systems",
   url: getSiteUrl(),
   description:
-    "Emerald Solar Solutions is an Irish software company providing an AI-powered SaaS platform for solar installers, including sales software, quote generation software, SEAI workflow software, project management software, and lead capture tools.",
-  defaultImage: "/emerald-logo-dark.png",
-  sameAs: [
-    "https://www.linkedin.com/company/emerald-solar-solutions",
-    "https://x.com/emeraldsolarai",
-  ],
+    "Clada Systems is an Irish software company building workflow automation tools for renewable energy businesses. Its flagship product, SolarGRANT Pro, helps installers manage leads, grant eligibility, quotations, customer workflows, and AI-assisted sales processes from one platform.",
+  defaultImage: "/clada-og.svg",
+  sameAs: ["https://www.linkedin.com/company/clada-systems"],
   business: {
     phone: readOptionalPublicEnv("NEXT_PUBLIC_BUSINESS_PHONE"),
     email: readOptionalPublicEnv("NEXT_PUBLIC_BUSINESS_EMAIL"),
@@ -78,496 +107,615 @@ export const siteConfig = {
   },
 };
 
+const dashboardProof: ProofItem = {
+  title: "Installer dashboard",
+  caption: "Lead management pipeline, recent leads, grant status, and open actions in one view.",
+  src: "/product-screenshots/solargrant-pro-installer-dashboard-light.png",
+  alt: "SolarGRANT Pro light installer dashboard with lead management pipeline and recent leads",
+};
+
+const leadTableProof: ProofItem = {
+  title: "Lead review table",
+  caption: "A structured queue for status, eligibility, documents, and next action.",
+  src: "/product-screenshots/lead-review-table-structure.jpg",
+  alt: "SolarGRANT Pro lead review table structure",
+};
+
+const seaiFormProof: ProofItem = {
+  title: "Homeowner form",
+  caption: "A branded homeowner intake flow for grant and quote preparation.",
+  src: "/product-screenshots/seai-form-workflow.jpg",
+  alt: "SolarGRANT Pro grant and quote intake form",
+};
+
+const websiteProof: ProofItem = {
+  title: "Connected intake flow",
+  caption: "Website and form enquiries can feed directly into the installer workflow.",
+  src: "/product-screenshots/seai-form-workflow.jpg",
+  alt: "SolarGRANT Pro connected intake flow",
+};
+
+const defaultDemo: DemoSectionContent = {
+  title: "Watch The SolarGRANT Pro Workflow",
+  intro:
+    "See how a lead can move from intake to dashboard review, quotation preparation, grant readiness, and follow-up in SolarGRANT Pro.",
+  thumbnail: "/product-screenshots/solargrant-pro-installer-dashboard-light.png",
+  ctaLabel: "Book a Demonstration",
+  ctaHref: "/contact",
+};
+
 export const servicePages = [
   {
     slug: "features",
-    navTitle: "Features",
-    metaTitle: "Solar Installer Workflow Software Features",
+    navTitle: "SolarGRANT Pro",
+    metaTitle: "SolarGRANT Pro Workflow Automation Software",
     metaDescription:
-      "Explore the Emerald Solar Solutions SaaS platform for solar installers, including AI-assisted sales software, quote generation software, SEAI workflow software, project management software, and homeowner onboarding.",
-    kicker: "Software platform features",
-    h1: "Software Built Around The Solar Installer Sales Workflow",
+      "Explore SolarGRANT Pro from Clada Systems: workflow automation software for renewable energy installers covering lead capture, grant eligibility, quotations, CRM workflows, and customer documentation.",
+    kicker: "SolarGRANT Pro",
+    h1: "Workflow Automation Software For Renewable Energy Installers",
     intro:
-      "Emerald Solar Solutions brings lead capture, AI-assisted qualification, quote generation software, SEAI workflow software, project management software, and homeowner onboarding into one practical SaaS platform for Irish solar installation companies.",
+      "SolarGRANT Pro helps installer teams capture enquiries, qualify leads, assess grant eligibility, prepare quotations, manage customer records, and keep follow-up visible.",
     summary:
-      "The Emerald Solar Solutions software platform is designed to reduce admin, speed up follow-up, and give your sales and operations team one clearer place to manage homeowner leads from first enquiry to booked job.",
+      "The platform connects the operational middle of an installer workflow: enquiry forms, lead review, grant details, quotation preparation, customer notes, document packs, and next actions.",
     heroPoints: [
-      "AI-assisted lead generation",
-      "Solar sales software and quote generation software",
-      "Project management software and SEAI workflow visibility",
+      "Lead capture and homeowner intake",
+      "Grant eligibility and quotation workflow",
+      "Customer records and next actions",
     ],
     benefits: [
-      "Capture enquiries from your website and route them into your sales workflow",
-      "Use structured questions to qualify homeowners before a sales call",
-      "Create cleaner solar quote conversations with system size and savings estimates",
-      "Track quote, survey, install, and grant paperwork status in one dashboard",
-      "Automate lead follow-up so fewer opportunities go cold",
-      "Include a professional lead-generation website with the EUR500/month package",
+      "Capture homeowner and business enquiries through structured forms",
+      "Prioritise leads using status, grant readiness, and missing-information checks",
+      "Prepare quotation calls with property, usage, and upload details already collected",
+      "Keep grant eligibility notes beside each customer record",
+      "Track quote, survey, install, and follow-up stages in one shared dashboard",
+      "Generate cleaner application packs and customer documentation",
     ],
     process: [
-      "Map your current sales and admin workflow",
-      "Set up lead capture, qualification, and quote steps",
-      "Configure SEAI grant readiness and project status tracking",
-      "Train your team on follow-up and project management",
-      "Review performance and improve the workflow over time",
+      "Map the installer company's current enquiry and sales process",
+      "Configure lead intake, grant, quotation, and customer workflow stages",
+      "Route each enquiry into review, quote, grant, and project stages",
+      "Review dashboard activity and improve handover gaps with the team",
+    ],
+    proof: {
+      kicker: "Inside the platform",
+      title: "See How Leads Move Through SolarGRANT Pro",
+      intro:
+        "SolarGRANT Pro gives teams a structured way to review leads, check readiness, manage customer information, and move work into the next operational stage.",
+      items: [dashboardProof, seaiFormProof, leadTableProof],
+    },
+    demo: defaultDemo,
+    insights: [
+      {
+        title: "Why installers lose homeowner enquiries",
+        copy:
+          "Many missed opportunities are not caused by a lack of demand. They happen because enquiries arrive without context, teams respond slowly, and the next action is unclear.",
+        points: [
+          "A structured intake form asks for the details a sales team usually has to chase later.",
+          "A visible lead queue helps teams call the right homeowners first.",
+          "A shared status view reduces handover confusion between sales, admin, and operations.",
+        ],
+      },
+      {
+        title: "What installers should collect before quoting",
+        copy:
+          "Early quote conversations improve when the team already has enough information to understand the home, urgency, grant situation, and likely next step.",
+        points: [
+          "Contact details, county, and Eircode where available",
+          "Energy usage, roof or meter photos, and broad installation goals",
+          "Grant-related details needed before a final proposal is prepared",
+        ],
+      },
     ],
     faqs: [
       {
-        question: "Is Emerald Solar Solutions a solar installer?",
+        question: "Is Clada Systems a solar installer?",
         answer:
-          "No. Emerald Solar Solutions is a software company serving solar installation companies. The platform helps installers generate, qualify, quote, and manage homeowner leads.",
+          "No. Clada Systems is an Irish software company that builds workflow automation software for renewable energy installation companies.",
       },
       {
-        question: "Who is the software for?",
+        question: "Who is the platform built for?",
         answer:
-          "It is built for solar installation companies in Ireland that want a better system for sales follow-up, quote preparation, SEAI information collection, and project management.",
+          "It is built for renewable energy installers that want cleaner lead capture, faster follow-up, better quotation preparation, and clearer project visibility.",
+      },
+      {
+        question: "Does every feature depend on AI?",
+        answer:
+          "No. SolarGRANT Pro includes AI-assisted sales follow-up, but the main value is a structured process for lead handling, quoting, grant preparation, documentation, and follow-up.",
       },
     ],
-    relatedServices: ["quote-generator", "seai-grant-workflow", "project-management"],
+    relatedServices: [
+      "quote-generator",
+      "seai-grant-workflow",
+      "project-management",
+      "ai-sales",
+    ],
   },
   {
     slug: "quote-generator",
-    navTitle: "Quote Generator",
-    metaTitle: "Solar Quote Generator Software for Installers | Emerald Solar Solutions",
+    navTitle: "Quote Workflow",
+    metaTitle: "Quotation Workflow Software For Renewable Energy Installers",
     metaDescription:
-      "Solar quote generator software for installers. Capture homeowner details, estimate system size and savings, pre-qualify leads, collect files, and prepare better sales calls.",
-    kicker: "Quote generator software",
-    h1: "Solar Quote Generator Software For Installers",
+      "SolarGRANT Pro quote workflow software for renewable energy installers. Collect customer details, estimate system sizing and savings, gather uploads, and prepare cleaner quotation conversations.",
+    kicker: "Quote workflow",
+    h1: "Quotation Workflow Software For Installers",
     intro:
-      "Give your sales team structured quote generation software to capture homeowner details, estimate system size, estimate savings, and prepare better sales conversations before a technical review or final proposal.",
+      "Turn vague homeowner enquiries into better prepared quote conversations by collecting property details, usage signals, uploads, and indicative estimate ranges before your team calls.",
     summary:
-      "The Emerald Solar Solutions quote generation software helps installers turn loose enquiries into clearer opportunities by collecting the information your team needs before the first serious sales call.",
+      "The SolarGRANT Pro quotation workflow supports sales preparation. It helps your team understand the opportunity earlier while final pricing stays with your company after survey and technical review.",
     heroPoints: [
-      "Capture homeowner details",
-      "Estimate system size and savings",
-      "Collect files and prepare sales calls",
+      "Homeowner details before the call",
+      "Estimated system and savings ranges",
+      "Uploads and notes in one record",
     ],
     benefits: [
-      "Collect property, usage, roof, and contact information in a consistent format",
-      "Pre-qualify leads so your sales team can prioritise the best opportunities",
-      "Estimate system size and savings ranges without presenting them as final quotes",
-      "Collect photos, files, or notes needed for a better follow-up conversation",
-      "Route quote requests into your wider solar installer workflow software",
+      "Collect property, usage, roof, and contact details in a consistent format",
+      "Show indicative system sizing and savings ranges without presenting a final quote",
+      "Request useful uploads such as meter, roof, or bill photos",
+      "Give sales teams a cleaner lead summary before the first serious conversation",
+      "Route quote requests into follow-up and project stages when the lead progresses",
     ],
     process: [
-      "A homeowner lead completes your branded quote flow",
-      "The system collects the details your sales team normally chases manually",
-      "Your team reviews the estimate, notes, and lead quality",
-      "Follow-up tasks and quote status are tracked in the platform",
-      "Final pricing stays with your company after survey and technical review",
+      "A homeowner completes the branded quote flow",
+      "SolarGRANT Pro collects the details your team normally has to chase",
+      "The lead record highlights estimate ranges, uploads, and missing items",
+      "Your team follows up with a stronger sales call",
+    ],
+    proof: {
+      kicker: "See the workflow",
+      title: "From Intake Form To Quote-Ready Lead",
+      intro:
+        "SolarGRANT Pro connects homeowner upload steps, quotation preparation, and the lead summary your team reviews before calling.",
+      items: [seaiFormProof, dashboardProof],
+    },
+    demo: {
+      ...defaultDemo,
+      title: "Watch The Quote Workflow",
+      intro:
+        "See how customer details move from quote intake into a clearer installer record for sales review.",
+    },
+    insights: [
+      {
+        title: "Cleaner quote calls start before the call",
+        copy:
+          "Installers often waste the first conversation collecting basic details. A structured quote workflow lets the sales team start with a clearer view of the home and the homeowner's intent.",
+        points: [
+          "Less time spent asking for basic property information",
+          "More useful discovery questions during the call",
+          "A better handover if the opportunity moves to survey or final proposal",
+        ],
+      },
+      {
+        title: "Estimated ranges should support, not replace, expertise",
+        copy:
+          "The software can help frame a likely system size or savings range, but it should not pretend to replace installer judgement, site survey, equipment choice, or final pricing.",
+        points: [
+          "Keep estimates clearly indicative",
+          "Use uploads and notes to spot obvious blockers earlier",
+          "Let the installer control the final quote and customer promise",
+        ],
+      },
     ],
     faqs: [
       {
-        question: "Does the quote generator create final installed prices?",
+        question: "Does the quote generator issue final installed prices?",
         answer:
-          "No. It supports indicative qualification and sales preparation. Final pricing should still depend on your technical review, site survey, equipment choices, and company process.",
+          "No. It supports lead preparation and indicative ranges. Final prices should still depend on your technical review, survey, equipment, and company process.",
       },
       {
-        question: "Can it capture photos or extra files?",
+        question: "Can homeowners upload photos or supporting files?",
         answer:
-          "Yes. The workflow can be set up to request supporting information so your team has more context before contacting the homeowner lead.",
+          "Yes. The flow can request useful files so the installer has better information before contacting the homeowner.",
+      },
+      {
+        question: "Can the quote flow connect to the project pipeline?",
+        answer:
+          "Yes. Suitable enquiries can move into follow-up, survey, quote, and project stages inside the broader platform.",
       },
     ],
-    relatedServices: ["ai-sales", "seai-grant-workflow", "project-management"],
+    relatedServices: [
+      "seai-grant-workflow",
+      "project-management",
+      "free-website",
+    ],
   },
   {
     slug: "seai-grant-workflow",
-    navTitle: "SEAI Grant Workflow",
-    metaTitle: "SEAI Grant Workflow Software for Solar Installers | Emerald Solar Solutions",
+    navTitle: "Grant Workflow",
+    metaTitle: "Grant Workflow Software For Renewable Energy Installers",
     metaDescription:
-      "SEAI workflow software for solar installers. Collect homeowner details, reduce missing information, check grant readiness, and prepare cleaner internal application workflows.",
-    kicker: "SEAI workflow software",
-    h1: "SEAI Grant Workflow Software",
+      "SolarGRANT Pro helps installers collect required grant information, reduce missing details, improve grant readiness, and streamline administration handover.",
+    kicker: "Grant administration",
+    h1: "Grant Eligibility Workflow For Installers",
     intro:
-      "Use SEAI workflow software to reduce back-and-forth around grant information by collecting homeowner details, checking readiness, and keeping paperwork status visible alongside each lead or project.",
+      "Collect grant-related details earlier, spot missing information, and give your admin team a clearer handover before the project reaches the paperwork stage.",
     summary:
-      "The Emerald Solar Solutions SEAI workflow software helps your team gather cleaner information earlier. It does not guarantee SEAI approval, but it can reduce missing details and make your admin process easier to manage.",
+      "The grant workflow is built to reduce back-and-forth. It does not guarantee approval, but it helps installers collect and review the information they need in a more organised way.",
     heroPoints: [
-      "Collect homeowner details",
-      "Reduce missing information",
-      "Track grant paperwork status",
+      "Required information collected earlier",
+      "Missing details flagged sooner",
+      "Grant readiness visible beside each lead",
     ],
     benefits: [
-      "Ask the right grant-related questions before your team has to chase them",
-      "Flag missing homeowner information earlier in the sales journey",
-      "Keep grant readiness visible beside quote, survey, and project status",
-      "Prepare cleaner internal application packs for your admin team",
-      "Reduce manual follow-up around repeat SEAI form questions",
+      "Ask for MPRN, county, property, and customer details in a structured flow",
+      "Reduce repeated email and phone requests for the same missing information",
+      "Keep readiness status visible alongside quote and project status",
+      "Prepare cleaner admin handovers before paperwork begins",
+      "Give installers a branded customer page for grant-related intake",
     ],
     process: [
-      "Configure the grant readiness questions your team needs",
-      "Collect details from homeowner leads through a structured form",
-      "Highlight missing information before the project moves forward",
-      "Track grant paperwork status from enquiry through installation workflow",
-      "Keep your team aligned without relying on scattered spreadsheets",
+      "Configure the information your team needs before grant admin starts",
+      "Collect details through a customer-friendly form",
+      "Flag missing or review-needed answers in the lead record",
+      "Move grant-ready leads into the next installer action",
+    ],
+    proof: {
+      kicker: "Grant workflow proof",
+      title: "See The Homeowner Grant Intake Flow",
+      intro:
+        "Dedicated screenshot areas show the customer form and installer view used to review grant readiness.",
+      items: [seaiFormProof, dashboardProof, leadTableProof],
+    },
+    demo: {
+      ...defaultDemo,
+      title: "Watch The Grant Intake Demo",
+      intro:
+        "Use a product walkthrough here to show the customer form, required fields, review screen, and next action inside the dashboard.",
+    },
+    insights: [
+      {
+        title: "How grant administration slows installer teams down",
+        copy:
+          "Grant admin becomes harder when required information is scattered across emails, calls, photos, and spreadsheets. The delay is usually a process problem before it is a paperwork problem.",
+        points: [
+          "Collect key homeowner information before the project moves too far",
+          "Keep grant readiness visible to sales and admin at the same time",
+          "Reduce repeated manual checks for information that should be standard",
+        ],
+      },
+      {
+        title: "Grant readiness is not the same as approval",
+        copy:
+          "The software should support a cleaner installer process while keeping approval decisions and compliance responsibility where they belong.",
+        points: [
+          "Use clear language around review and readiness",
+          "Avoid promising approval before the proper checks are complete",
+          "Keep the installer's internal process auditable and visible",
+        ],
+      },
     ],
     faqs: [
       {
-        question: "Does the software guarantee SEAI approval?",
+        question: "Does the software guarantee grant approval?",
         answer:
-          "No. Emerald Solar Solutions does not guarantee SEAI approval. The workflow helps installers collect and organise information for their own process.",
+          "No. It helps installers collect and organise information for their own process, but it does not guarantee approval.",
       },
       {
-        question: "Can it replace our current admin checklist?",
+        question: "Can the form match our current checklist?",
         answer:
-          "It can be configured around your existing checklist so your team has a cleaner digital workflow instead of repeating the same information requests manually.",
+          "Yes. The intake can be shaped around the information your team already needs before moving a lead or project forward.",
+      },
+      {
+        question: "Is this page for homeowners applying directly?",
+        answer:
+          "No. Clada Systems sells software to installation companies, not homeowner grant services.",
       },
     ],
     relatedServices: ["quote-generator", "project-management", "features"],
   },
   {
     slug: "project-management",
-    navTitle: "Project Management",
-    metaTitle: "Project Management Software for Solar Installers | Emerald Solar Solutions",
+    navTitle: "Workflow Management",
+    metaTitle: "Installer Workflow Management Software",
     metaDescription:
-      "Project management software for solar installers. Track leads, quote status, site visits, project status, SEAI paperwork, customer communication, and team visibility.",
-    kicker: "Project management",
-    h1: "Project Management Software For Solar Installers",
+      "Workflow management software for renewable energy installers. Track lead status, quotation status, install status, customer communication, documentation, and workflow visibility.",
+    kicker: "Workflow visibility",
+    h1: "Workflow Management Software For Installer Teams",
     intro:
-      "Keep your team aligned with solar installer workflow software for lead status, quote status, site visit status, project status, SEAI paperwork, customer communication, and next actions.",
+      "Give sales, admin, and operations teams one place to see lead status, quote progress, site visit stages, install readiness, and follow-up responsibility.",
     summary:
-      "Emerald Solar Solutions project management software helps installers move away from messy spreadsheets and disconnected tools by giving sales and operations a clearer shared workflow.",
+      "The workflow management area helps installers move away from scattered spreadsheets by showing where each customer sits in the sales and delivery process.",
     heroPoints: [
-      "Track quote and site visit status",
-      "Manage project and paperwork stages",
-      "Improve team visibility",
+      "Lead and quote status",
+      "Install and paperwork stages",
+      "Team next actions",
     ],
     benefits: [
-      "Track each lead from new enquiry through quote, site visit, booked job, and completion",
-      "See quote status, site visit status, project status, and grant paperwork status",
-      "Keep customer communication and internal notes in context",
-      "Give sales, admin, and operations teams a shared view of next actions",
-      "Reduce missed handovers between sales and project delivery",
+      "Track every lead from new enquiry through quote, survey, install, and completion",
+      "Keep customer notes, uploads, and status changes connected to the lead",
+      "Give the team a shared view of who needs follow-up next",
+      "Reduce missed handovers between sales and operations",
+      "Spot bottlenecks before they turn into customer delays",
     ],
     process: [
-      "Import or capture new leads in your workflow",
-      "Move opportunities through quote, follow-up, and survey stages",
-      "Track project milestones and paperwork status",
-      "Keep team notes and customer updates in one place",
-      "Review pipeline visibility and operational bottlenecks",
+      "Capture or import the lead",
+      "Move the opportunity through quote and survey stages",
+      "Track grant, project, and install status in the same record",
+      "Review open actions and follow-up queues with the team",
+    ],
+    proof: {
+      kicker: "Inside the dashboard",
+      title: "How Leads Are Organised",
+      intro:
+        "Reusable dashboard screenshot blocks show pipeline status, sales priority, review queues, and team visibility.",
+      items: [dashboardProof, leadTableProof],
+    },
+    demo: {
+      ...defaultDemo,
+      title: "Watch The Dashboard Demo",
+      intro:
+        "See how a lead can move from enquiry to quotation, survey, and active project stages inside the dashboard.",
+    },
+    insights: [
+      {
+        title: "Why spreadsheets start to fail",
+        copy:
+          "A spreadsheet can track rows, but it rarely gives sales, admin, and project teams a reliable shared process. As volume grows, missing context becomes expensive.",
+        points: [
+          "Status fields drift when everyone updates them differently",
+          "Customer details live away from the next action",
+          "Managers struggle to see what is stuck or overdue",
+        ],
+      },
+      {
+        title: "How workflow software helps installers operate efficiently",
+        copy:
+          "A clearer system does not just store information. It helps teams work in the same order, review the same signals, and keep every opportunity moving.",
+        points: [
+          "Sales can focus on the strongest opportunities",
+          "Admin can see what information is missing",
+          "Operations can understand what has been promised before delivery begins",
+        ],
+      },
     ],
     faqs: [
       {
-        question: "Is this a replacement for our spreadsheet?",
+        question: "Can this replace our lead spreadsheet?",
         answer:
-          "For many installers, yes. The platform gives your team a clearer pipeline and project view than a shared spreadsheet can provide.",
+          "For many installers, yes. SolarGRANT Pro is designed to give teams a clearer shared workflow than a spreadsheet can provide.",
       },
       {
-        question: "Can sales and operations use the same system?",
+        question: "Does it support both sales and operations?",
         answer:
-          "Yes. The workflow is designed to connect lead handling, quoting, follow-up, project status, and paperwork visibility.",
+          "Yes. It connects lead review, quote progress, follow-up, grant readiness, and project status in one system.",
+      },
+      {
+        question: "Can we keep our current stages?",
+        answer:
+          "The workflow can be configured around your existing sales and project process during onboarding.",
       },
     ],
-    relatedServices: ["features", "ai-sales", "seai-grant-workflow"],
+    relatedServices: ["features", "quote-generator", "seai-grant-workflow"],
   },
   {
     slug: "ai-sales",
-    navTitle: "AI Sales",
-    metaTitle: "AI Sales Software for Solar Installers | Emerald Solar Solutions",
+    navTitle: "Sales Follow-Up",
+    metaTitle: "AI-Assisted Sales Follow-Up For Installers",
     metaDescription:
-      "AI-assisted sales software and solar sales software for installers in Ireland. Respond faster, qualify leads, support follow-up, improve sales scripts, and nurture homeowner enquiries.",
-    kicker: "AI-assisted sales",
-    h1: "AI-Assisted Lead Generation And Sales Follow-Up",
+      "AI-assisted sales follow-up software for installers. Support enquiry review, lead nurturing, customer response, and next-step prompts inside SolarGRANT Pro.",
+    kicker: "Sales follow-up",
+    h1: "AI-Assisted Sales Follow-Up For Installers",
     intro:
-      "Respond faster to solar enquiries, qualify homeowners more consistently, support follow-up, prepare sales scripts, and reduce missed opportunities without pretending AI can guarantee sales.",
+      "Support enquiry review, lead nurturing, and faster customer response without turning your sales process into an AI buzzword.",
     summary:
-      "The Emerald Solar Solutions AI-assisted sales software helps your team prioritise the right leads, keep conversations moving, and avoid the silent drop-off that happens when follow-up depends on memory alone.",
+      "The sales layer helps installers respond quickly, organise lead quality, support outreach, and keep interested homeowners from going quiet after the first enquiry.",
     heroPoints: [
-      "Faster lead response",
-      "Better lead qualification",
-      "Follow-up and script support",
+      "AI-assisted follow-up",
+      "Follow-up prompts and nurturing",
+      "Campaign-to-dashboard handoff",
     ],
     benefits: [
-      "Help your sales team respond to new homeowner leads faster",
-      "Use structured qualification to separate strong leads from vague enquiries",
-      "Support sales scripts and call preparation with lead context",
-      "Nurture homeowners who are interested but not ready to book immediately",
-      "Reduce missed opportunities caused by slow or inconsistent follow-up",
+      "Connect campaign enquiries to structured customer intake forms",
+      "Prioritise leads by urgency, readiness, and missing details",
+      "Support faster follow-up with clearer call notes and next-step prompts",
+      "Nurture customers who are interested but not ready to book immediately",
+      "Integrate Meta ad enquiries into the same lead handling process",
     ],
     process: [
-      "Capture the lead through your site or campaign",
-      "Qualify the homeowner with structured questions",
-      "Suggest next-step messaging and sales talking points",
-      "Track follow-up status so leads do not go quiet unnoticed",
-      "Review outcomes and refine your sales workflow",
+      "Capture the enquiry from website, campaign, or referral traffic",
+      "Collect the customer details needed to understand the opportunity",
+      "Review lead quality and suggested next action",
+      "Track follow-up so interested homeowners do not disappear",
+    ],
+    proof: {
+      kicker: "Lead review proof",
+      title: "How Sales Teams Prioritise Follow-Up",
+      intro:
+        "SolarGRANT Pro keeps lead status, sales signals, and follow-up queues visible so installer teams can prioritise the right next action.",
+      items: [dashboardProof, leadTableProof],
+    },
+    demo: {
+      ...defaultDemo,
+      title: "Watch The Lead Follow-Up Demo",
+      intro:
+        "See how a campaign or website lead can enter the system, be reviewed, and move into the next follow-up action.",
+    },
+    insights: [
+      {
+        title: "How faster follow-up improves solar sales",
+        copy:
+          "When customers submit a renewable energy enquiry, the installer that responds with useful context first often has the stronger conversation.",
+        points: [
+          "A quick response matters most when the lead is actively comparing options",
+          "Structured forms help the team avoid a generic first call",
+          "Follow-up reminders reduce drop-off after initial interest",
+        ],
+      },
+      {
+        title: "Where AI belongs in installer sales",
+        copy:
+          "AI should support the team with organisation, summarisation, and next-step assistance. It should not replace the installer's judgement, pricing, or customer relationship.",
+        points: [
+          "Use automation to reduce repetitive admin",
+          "Keep human control over claims, quotes, and commitments",
+          "Treat sales assistance as part of a wider workflow, not a standalone trick",
+        ],
+      },
     ],
     faqs: [
       {
-        question: "Does AI guarantee more sales?",
+        question: "Does AI guarantee sales?",
         answer:
-          "No. AI does not guarantee sales. It supports faster response, clearer qualification, and more consistent follow-up so your team can work opportunities more effectively.",
+          "No. The software supports faster response, better organisation, and more consistent follow-up, but it cannot guarantee sales.",
       },
       {
-        question: "Can our team still control the sales conversation?",
+        question: "Can this work with Meta ads?",
         answer:
-          "Yes. The software supports your team with context, prompts, and workflow structure while your company stays in control of pricing and customer communication.",
+          "Yes. Campaign enquiries can be routed into the same intake, review, and follow-up process used for website leads.",
+      },
+      {
+        question: "Will our team still control customer communication?",
+        answer:
+          "Yes. Your team stays in control of pricing, sales conversations, and customer promises.",
       },
     ],
-    relatedServices: ["quote-generator", "project-management", "pricing"],
+    relatedServices: ["features", "quote-generator", "seai-grant-workflow"],
   },
   {
     slug: "pricing",
-    navTitle: "Pricing",
-    metaTitle: "Solar Installer Software Pricing | Emerald Solar Solutions",
+    navTitle: "Discuss Fit",
+    metaTitle: "Discuss SolarGRANT Pro With Clada Systems",
     metaDescription:
-      "Solar installer software pricing from Emerald Solar Solutions. The EUR500/month SaaS platform package includes AI sales software, quote generation software, SEAI workflow software, project management software, lead capture, onboarding support, and a free professional website.",
-    kicker: "Pricing",
-    h1: "EUR500/month Solar Growth Software Package",
+      "Book a demonstration with Clada Systems to discuss your installer workflow and the right SolarGRANT Pro setup for your renewable energy business.",
+    kicker: "Workflow discussion",
+    h1: "Discuss Your Installer Workflow With Clada Systems",
     intro:
-      "A focused monthly SaaS platform for Irish solar installers who want better lead capture, qualification, quote generation software, SEAI workflow software, project management software, and project visibility.",
+      "SolarGRANT Pro is scoped around each installer's workflow, lead sources, quotation process, grant administration and customer handover requirements.",
     summary:
-      "The EUR500/month Emerald Solar Solutions package includes AI-assisted sales software, quote generation software, SEAI grant streamline form, project management software, lead capture system, free professional website, and onboarding support.",
+      "Rather than publishing fixed packages, Clada Systems uses a demonstration-led process to understand your business workflow and recommend the right SolarGRANT Pro setup.",
     heroPoints: [
-      "EUR500/month package",
-      "Free professional website included",
-      "Onboarding support included",
+      "Workflow review",
+      "SolarGRANT Pro demonstration",
+      "Implementation discussion",
     ],
     benefits: [
-      "AI-assisted sales software",
-      "Solar quote generation software",
-      "SEAI workflow software",
-      "Project management software",
-      "Lead capture system",
-      "Free professional website",
-      "Onboarding support",
+      "Lead capture and homeowner intake requirements",
+      "Quote workflow and sales preparation needs",
+      "Grant readiness and administration handover",
+      "CRM, customer records and installer dashboard setup",
+      "AI-assisted follow-up where it supports the team",
+      "Customer documentation and application pack requirements",
+      "Professional support model for your installer process",
     ],
     process: [
-      "Book a software demo",
-      "Review your current website, sales process, and workflow requirements",
-      "Set up your website and lead capture workflow",
-      "Launch quote, SEAI, follow-up, and project management tools",
-      "Refine the system as your installer team starts using it",
+      "Book a demonstration with Clada Systems",
+      "Review your current website, lead sources, and sales process",
+      "Discuss workflow configuration, onboarding, and support requirements",
+      "Agree the right SolarGRANT Pro setup and next steps",
+    ],
+    proof: {
+      kicker: "What we discuss",
+      title: "Software Shaped Around The Installer Workflow",
+      intro:
+        "The demonstration focuses on the dashboard, intake forms, quote workflow, grant readiness, and the operational process your team needs to improve.",
+      items: [websiteProof, dashboardProof, seaiFormProof],
+    },
+    demo: {
+      ...defaultDemo,
+      title: "Watch The SolarGRANT Pro Walkthrough",
+      intro:
+        "See how SolarGRANT Pro can support enquiry capture, quotation preparation, grant readiness, customer records, and follow-up in one installer workflow.",
+    },
+    insights: [
+      {
+        title: "Why we discuss workflow before pricing",
+        copy:
+          "Renewable energy installers often have different lead sources, admin responsibilities, team structures, and handover points. A short workflow review makes the recommendation more useful than a public package table.",
+        points: [
+          "Website enquiries can feed directly into the platform",
+          "The dashboard gives the team one shared view of active leads",
+          "Onboarding can be shaped around the installer's actual process",
+        ],
+      },
     ],
     faqs: [
       {
-        question: "What is included in the EUR500/month package?",
+        question: "How is SolarGRANT Pro pricing handled?",
         answer:
-          "It includes AI-assisted sales workflow, quote generator, SEAI grant streamline form, project management tools, lead capture, a free professional website, and onboarding support.",
+          "Clada Systems discusses pricing after a demonstration and workflow review, so the recommended setup reflects your lead sources, sales process, grant administration, documentation needs, and support requirements.",
       },
       {
-        question: "Can setup vary?",
+        question: "Is there public package pricing?",
         answer:
-          "Yes. Final setup may depend on your current website, sales process, and workflow requirements.",
+          "No. SolarGRANT Pro is sold through a book-a-demo model because installer workflows vary. The discussion focuses on fit, implementation, and the right level of support.",
+      },
+      {
+        question: "Can setup vary by installer?",
+        answer:
+          "Yes. Final setup depends on your current website, lead sources, sales process, and workflow requirements.",
       },
     ],
-    relatedServices: ["features", "free-website-for-solar-installers", "contact"],
+    relatedServices: ["features", "quote-generator", "project-management"],
   },
   {
-    slug: "free-website-for-solar-installers",
-    navTitle: "Free Website",
-    metaTitle: "Free Website for Solar Installers | Emerald Solar Solutions",
+    slug: "free-website",
+    navTitle: "Website Intake",
+    metaTitle: "Lead Capture Website Support For Installers",
     metaDescription:
-      "A free professional lead-generation website is included when solar installers sign up to the EUR500/month Emerald Solar Solutions software package.",
-    kicker: "Free website included",
-    h1: "Free Professional Website For Solar Installers",
+      "Professional lead capture website support from Clada Systems can help installer enquiries feed directly into SolarGRANT Pro workflows.",
+    kicker: "Website intake",
+    h1: "Website Intake Connected To SolarGRANT Pro",
     intro:
-      "Every installer who signs up to the EUR500/month package gets a professional lead-generation website included, built to capture solar enquiries and send them directly into your workflow.",
+      "Installer websites work better when enquiries arrive with enough context to support quotation, grant, and follow-up workflows.",
     summary:
-      "Your website should not be a brochure that creates more admin. It should capture useful homeowner information, route leads into your sales process, and support faster follow-up.",
+      "Website intake exists because lead generation and lead handling should not be disconnected. Homeowner forms, calls to action, and follow-up should feed the same installer process.",
     heroPoints: [
-      "Included with the EUR500/month package",
-      "Built for solar lead capture",
+      "Professional website",
+      "Lead capture forms",
       "Connected to your workflow",
     ],
     benefits: [
-      "Professional website included as part of the monthly software package",
-      "Lead capture forms connected to your quote and SEAI workflows",
-      "Cleaner calls to action for homeowners researching solar",
-      "A stronger first impression for your installer company",
-      "Designed to reduce manual retyping and missed enquiries",
+      "Professional website and intake support where required",
+      "Homeowner enquiry forms connected to quote and grant intake",
+      "Clear calls to action for solar, grant, and quote enquiries",
+      "A cleaner first impression for your installer company",
+      "No manual retyping between website forms and lead review",
     ],
     process: [
-      "Review your current website and sales process",
-      "Build or refine your lead-generation website",
-      "Connect forms to quote, SEAI, and project workflows",
-      "Launch with demo-ready calls to action",
-      "Improve content and conversion over time",
+      "Review your current website and lead sources",
+      "Build or refine the pages and calls to action",
+      "Connect homeowner forms to SolarGRANT Pro",
+      "Launch the site and review lead quality after enquiries arrive",
+    ],
+    proof: {
+      kicker: "Website proof",
+      title: "A Website Built To Feed The Workflow",
+      intro:
+        "Website screenshots, demo thumbnails, and form screenshots can be shown together to prove the offer is more than a brochure site.",
+      items: [websiteProof, seaiFormProof, dashboardProof],
+    },
+    demo: {
+      ...defaultDemo,
+      title: "Watch The Website-To-Dashboard Demo",
+      intro:
+        "See how a website enquiry can move from customer form submission into the installer dashboard for review.",
+    },
+    insights: [
+      {
+        title: "Why website intake belongs in the software workflow",
+        copy:
+          "A website can create more admin if it only sends loose contact forms to an inbox. The offer is stronger when the site is connected to qualification, quote prep, and follow-up.",
+        points: [
+          "Homeowners are guided into useful forms instead of vague messages",
+          "Leads arrive with the context the team needs to respond",
+          "The website becomes part of the workflow, not a separate brochure",
+        ],
+      },
     ],
     faqs: [
       {
-        question: "Is the website really included?",
+        question: "Can Clada Systems support our lead capture website?",
         answer:
-          "Yes. A professional lead-generation website is included when your installer company signs up to the EUR500/month software package.",
+          "Yes. Website and form support can be included where it helps connect installer enquiries into SolarGRANT Pro.",
       },
       {
-        question: "Does the website send leads into the software?",
+        question: "Does the website connect to the dashboard?",
         answer:
-          "Yes. The goal is to capture solar enquiries and route them directly into your qualification, quote, SEAI, and project workflow.",
+          "Yes. The goal is to capture homeowner enquiries and route them into the quote, grant, and follow-up process.",
       },
-    ],
-    relatedServices: ["pricing", "features", "quote-generator"],
-  },
-  {
-    slug: "solar-panels",
-    navTitle: "Solar Panel Lead Capture",
-    metaTitle: "Solar Panel Lead Capture Software for Installers",
-    metaDescription:
-      "Solar panel lead capture software for installers. Reframe homeowner solar enquiries into qualified leads, quote workflows, and project follow-up.",
-    kicker: "Installer use case",
-    h1: "Solar Panel Lead Capture Software For Installers",
-    intro:
-      "If homeowners are finding your company through solar panel searches, Emerald Solar Solutions helps turn those enquiries into qualified leads your sales team can follow up efficiently.",
-    summary:
-      "This is a software use-case page for solar installers. It explains how solar businesses can use software to capture homeowner demand and manage the sales workflow more clearly.",
-    heroPoints: ["Lead capture", "Qualification", "Quote workflow"],
-    benefits: [
-      "Capture homeowner solar panel enquiries through structured forms",
-      "Ask qualification questions before your team spends time chasing details",
-      "Route good leads into quote and follow-up stages",
-      "Keep weaker enquiries visible without letting them interrupt the team",
-    ],
-    process: [
-      "Capture the solar enquiry",
-      "Qualify the homeowner",
-      "Prepare the quote conversation",
-      "Track follow-up",
-      "Move suitable leads into project management",
-    ],
-    faqs: [
       {
-        question: "Is this page for solar installers?",
+        question: "Can it replace an existing installer website?",
         answer:
-          "Yes. Emerald Solar Solutions provides software for solar installation companies that want a clearer lead capture, qualification, quote, and project workflow.",
-      },
-    ],
-    relatedServices: ["features", "quote-generator", "ai-sales"],
-  },
-  {
-    slug: "domestic-solar",
-    navTitle: "Homeowner Lead Workflow",
-    metaTitle: "Homeowner Solar Lead Workflow Software",
-    metaDescription:
-      "Homeowner solar lead workflow software for installers. Qualify domestic solar enquiries, collect details, and reduce back-and-forth.",
-    kicker: "Installer use case",
-    h1: "Homeowner Solar Lead Workflow Software",
-    intro:
-      "Help your installer company manage domestic solar enquiries with structured qualification, quote preparation, homeowner onboarding, and follow-up tracking.",
-    summary:
-      "The platform helps your sales team reduce back-and-forth with homeowner leads while keeping the final quote and sales process under your control.",
-    heroPoints: ["Homeowner onboarding", "Lead qualification", "Follow-up tracking"],
-    benefits: [
-      "Collect homeowner details earlier",
-      "Reduce repeated email and phone questions",
-      "Prepare better sales calls",
-      "Track domestic lead status from enquiry to booked job",
-    ],
-    process: [
-      "Capture the homeowner enquiry",
-      "Collect required details",
-      "Qualify and prioritise the lead",
-      "Prepare the sales call",
-      "Track next actions",
-    ],
-    faqs: [
-      {
-        question: "Is this for homeowners?",
-        answer:
-          "No. It is for solar installation companies that sell to homeowners and need a better workflow for those leads.",
-      },
-    ],
-    relatedServices: ["quote-generator", "seai-grant-workflow", "project-management"],
-  },
-  {
-    slug: "commercial-solar",
-    navTitle: "Commercial Lead Workflow",
-    metaTitle: "Commercial Solar Lead Workflow Software",
-    metaDescription:
-      "Commercial solar lead workflow software for installers. Capture business enquiries, qualify opportunities, and manage quote follow-up.",
-    kicker: "Installer use case",
-    h1: "Commercial Solar Lead Workflow Software",
-    intro:
-      "Give your installer company a clearer process for capturing and qualifying commercial solar enquiries before your team invests time in detailed proposals.",
-    summary:
-      "Commercial opportunities often need more context. Emerald Solar Solutions helps collect lead details, organise follow-up, and keep project status visible.",
-    heroPoints: ["Business enquiries", "Qualification", "Pipeline visibility"],
-    benefits: [
-      "Capture commercial site and usage context",
-      "Prepare better sales discovery calls",
-      "Track proposal and survey status",
-      "Keep follow-up visible across your team",
-    ],
-    process: [
-      "Capture the commercial enquiry",
-      "Collect business and site details",
-      "Qualify the opportunity",
-      "Track proposal follow-up",
-      "Move won work into project stages",
-    ],
-    faqs: [
-      {
-        question: "Is this commercial solar page a software use case?",
-        answer:
-          "Yes. Emerald Solar Solutions provides software that helps solar installers manage commercial solar sales workflows.",
-      },
-    ],
-    relatedServices: ["features", "project-management", "ai-sales"],
-  },
-  {
-    slug: "battery-storage",
-    navTitle: "Battery Lead Workflow",
-    metaTitle: "Battery Storage Lead Workflow Software",
-    metaDescription:
-      "Battery storage lead workflow software for solar installers. Capture interest, qualify homeowner needs, and support follow-up.",
-    kicker: "Installer use case",
-    h1: "Battery Storage Lead Workflow Software",
-    intro:
-      "Use structured lead capture to understand whether homeowner leads are interested in battery storage, future upgrades, or solar-plus-storage conversations.",
-    summary:
-      "Battery questions can add admin to solar sales. The platform helps your team capture interest and keep follow-up organised.",
-    heroPoints: ["Battery interest", "Qualification", "Follow-up"],
-    benefits: [
-      "Collect battery interest during the lead capture process",
-      "Prepare better sales conversations around storage needs",
-      "Keep upgrade opportunities visible",
-      "Avoid losing context between first enquiry and proposal",
-    ],
-    process: [
-      "Capture solar and battery interest",
-      "Ask structured qualification questions",
-      "Prepare the sales conversation",
-      "Track quote status",
-      "Follow up on future upgrade opportunities",
-    ],
-    faqs: [
-      {
-        question: "Is this battery installation?",
-        answer:
-          "No. This page describes software workflows for installers managing battery-related sales enquiries.",
-      },
-    ],
-    relatedServices: ["quote-generator", "project-management", "features"],
-  },
-  {
-    slug: "ev-charger-installation",
-    navTitle: "EV Charger Lead Workflow",
-    metaTitle: "EV Charger Lead Workflow Software",
-    metaDescription:
-      "EV charger lead workflow software for solar installers. Capture EV interest, qualify homeowner needs, and manage solar-related follow-up.",
-    kicker: "Installer use case",
-    h1: "EV Charger Lead Workflow Software",
-    intro:
-      "If your installer company also handles EV charger interest, Emerald Solar Solutions helps capture the right context and keep follow-up connected to your solar sales workflow.",
-    summary:
-      "The platform helps installers organise EV charger interest as part of a broader homeowner lead, quote, and project management process.",
-    heroPoints: ["EV interest capture", "Sales context", "Project visibility"],
-    benefits: [
-      "Capture EV charger interest alongside solar enquiries",
-      "Qualify homeowner needs before follow-up",
-      "Keep related solar, battery, and EV notes together",
-      "Track next actions in the same project workflow",
-    ],
-    process: [
-      "Capture the enquiry",
-      "Collect EV and solar context",
-      "Qualify the lead",
-      "Prepare the follow-up",
-      "Track status through your workflow",
-    ],
-    faqs: [
-      {
-        question: "Is this EV charger page a software workflow use case?",
-        answer:
-          "Yes. Emerald Solar Solutions provides software workflows for installer companies that manage solar and related homeowner enquiries.",
+          "In many cases, yes. During onboarding, Clada Systems can review whether replacing or improving the current site is the better route.",
       },
     ],
     relatedServices: ["features", "quote-generator", "project-management"],
@@ -578,157 +726,94 @@ export const locationPages = [
   {
     slug: "dublin",
     areaLabel: "Dublin",
-    metaTitle: "Solar Installer Software Dublin",
+    metaTitle: "Renewable Energy Installer Software Dublin",
     metaDescription:
-      "AI-assisted sales, quote generation, SEAI workflow, and project management software for solar installers serving Dublin homeowner leads.",
-    h1: "Solar Installer Software For Dublin Teams",
+      "Workflow automation software for renewable energy installation companies serving Dublin, including lead capture, quotation preparation, grant information collection, and project visibility.",
+    h1: "Installer Workflow Software For Dublin Teams",
     intro:
-      "Emerald Solar Solutions helps solar installation companies serving Dublin capture, qualify, quote, and manage homeowner leads through one software workflow.",
+      "Clada Systems helps installer teams serving Dublin manage homeowner enquiries, quotation preparation, grant details, and project status in one software workflow.",
     localSignals: [
       "Lead capture for Dublin solar enquiries",
-      "Quote and SEAI workflow visibility",
-      "Project management for installer teams",
+      "Quote and grant workflow visibility",
+      "Project tracking for installer teams",
     ],
   },
   {
     slug: "cork",
     areaLabel: "Cork",
-    metaTitle: "Solar Installer Software Cork",
+    metaTitle: "Renewable Energy Installer Software Cork",
     metaDescription:
-      "Solar installer software for Cork teams that need better lead capture, quote generation, SEAI workflow, and project visibility.",
-    h1: "Solar Installer Software For Cork Teams",
+      "Installer workflow software for Cork teams that need better lead capture, quotation preparation, grant workflow, and project visibility.",
+    h1: "Installer Workflow Software For Cork Teams",
     intro:
-      "For installers serving Cork, Emerald Solar Solutions helps organise homeowner leads, quote preparation, SEAI information collection, and project status.",
+      "For installers serving Cork, Clada Systems helps organise homeowner leads, quote preparation, grant information, and project follow-up.",
     localSignals: [
-      "Homeowner lead qualification",
-      "Quote generator workflow",
+      "Homeowner lead intake",
+      "Quote preparation workflow",
       "Installer project visibility",
-    ],
-  },
-  {
-    slug: "galway",
-    areaLabel: "Galway",
-    metaTitle: "Solar Installer Software Galway",
-    metaDescription:
-      "AI sales and project management software for solar installers serving Galway and the west of Ireland.",
-    h1: "Solar Installer Software For Galway Teams",
-    intro:
-      "Emerald Solar Solutions supports installer teams serving Galway with lead capture, quote generation, SEAI workflow, and project management tools.",
-    localSignals: [
-      "AI-assisted follow-up",
-      "SEAI information collection",
-      "Sales pipeline visibility",
-    ],
-  },
-  {
-    slug: "limerick",
-    areaLabel: "Limerick",
-    metaTitle: "Solar Installer Software Limerick",
-    metaDescription:
-      "Software for solar installers serving Limerick, including AI lead generation, quote workflow, SEAI grant forms, and project management.",
-    h1: "Solar Installer Software For Limerick Teams",
-    intro:
-      "Installer companies serving Limerick can use Emerald Solar Solutions to reduce admin, qualify leads faster, and keep quote and project status visible.",
-    localSignals: [
-      "Lead capture workflow",
-      "Solar quote generator",
-      "Project and paperwork tracking",
-    ],
-  },
-  {
-    slug: "waterford",
-    areaLabel: "Waterford",
-    metaTitle: "Solar Installer Software Waterford",
-    metaDescription:
-      "Solar installer software for Waterford teams that need lead capture, quote generation, SEAI workflow, and project management.",
-    h1: "Solar Installer Software For Waterford Teams",
-    intro:
-      "Emerald Solar Solutions helps installers serving Waterford manage homeowner enquiries, quote preparation, follow-up, and project visibility.",
-    localSignals: [
-      "Homeowner onboarding",
-      "Follow-up automation",
-      "SEAI readiness workflow",
-    ],
-  },
-  {
-    slug: "kildare",
-    areaLabel: "Kildare",
-    metaTitle: "Solar Installer Software Kildare",
-    metaDescription:
-      "AI-assisted lead generation and project workflow software for solar installation companies serving Kildare.",
-    h1: "Solar Installer Software For Kildare Teams",
-    intro:
-      "For installers serving Kildare, Emerald Solar Solutions keeps lead qualification, quote generation, SEAI details, and project tracking in one workflow.",
-    localSignals: [
-      "Lead qualification",
-      "Quote workflow",
-      "Team visibility",
-    ],
-  },
-  {
-    slug: "meath",
-    areaLabel: "Meath",
-    metaTitle: "Solar Installer Software Meath",
-    metaDescription:
-      "Solar installer software for Meath teams that want better lead capture, AI-assisted follow-up, SEAI workflow, and project management.",
-    h1: "Solar Installer Software For Meath Teams",
-    intro:
-      "Emerald Solar Solutions helps installer teams serving Meath reduce admin and keep homeowner lead, quote, and project details organised.",
-    localSignals: [
-      "AI-assisted sales workflow",
-      "SEAI grant information collection",
-      "Project status tracking",
-    ],
-  },
-  {
-    slug: "wicklow",
-    areaLabel: "Wicklow",
-    metaTitle: "Solar Installer Software Wicklow",
-    metaDescription:
-      "Software for solar installation companies serving Wicklow, with lead generation, quote workflow, SEAI forms, and project management.",
-    h1: "Solar Installer Software For Wicklow Teams",
-    intro:
-      "Installer companies serving Wicklow can use Emerald Solar Solutions to capture better leads, qualify homeowners faster, and manage project status.",
-    localSignals: [
-      "Lead capture",
-      "Quote and SEAI workflow",
-      "Installer project management",
     ],
   },
 ] satisfies LocationPageContent[];
 
 export const homepageFaqs = [
   {
-    question: "Is Emerald Solar Solutions for homeowners?",
+    question: "Is Clada Systems for homeowners?",
     answer:
-      "No. Emerald Solar Solutions is a software company that sells tools to solar installation companies in Ireland.",
+      "No. Clada Systems is a software company for renewable energy installation companies in Ireland.",
   },
   {
-    question: "What does the EUR500/month package include?",
+    question: "What does SolarGRANT Pro include?",
     answer:
-      "It includes AI-assisted sales software, quote generation software, SEAI workflow software, project management software, lead capture, a free professional website, and onboarding support.",
+      "It includes lead capture, grant eligibility checks, CRM and workflow management, quote generation, AI-assisted sales follow-up, customer documentation, and application pack generation.",
   },
   {
-    question: "Does the platform guarantee SEAI grant approval?",
+    question: "Does the platform guarantee grant approval?",
     answer:
-      "No. The SEAI workflow helps installers collect and organise information, but it does not guarantee approval.",
-  },
-  {
-    question: "Who should book a demo?",
-    answer:
-      "Solar installation companies that want to generate better leads, qualify homeowners faster, reduce admin, and manage more jobs from one workflow should book a software demo.",
+      "No. The grant workflow helps installers collect and organise information, but it does not guarantee approval.",
   },
 ] satisfies FaqItem[];
 
 export const primaryNavItems = [
   { label: "Home", href: "/" },
+  { label: "SolarGRANT Pro", href: "/features" },
   { label: "About", href: "/about" },
-  { label: "Features", href: "/features" },
-  { label: "Quote Generator", href: "/quote-generator" },
-  { label: "SEAI Grant Workflow", href: "/seai-grant-workflow" },
-  { label: "Project Management", href: "/project-management" },
-  { label: "Pricing", href: "/pricing" },
   { label: "Contact", href: "/contact" },
+];
+
+export const platformNavItems = [
+  {
+    label: "Quote Workflow",
+    href: "/quote-generator",
+    description: "Prepare stronger quotation conversations from structured intake.",
+  },
+  {
+    label: "Grant Workflow",
+    href: "/seai-grant-workflow",
+    description: "Collect grant details earlier and reduce administration gaps.",
+  },
+  {
+    label: "Sales Follow-Up",
+    href: "/ai-sales",
+    description: "Keep next actions visible with practical AI-assisted support.",
+  },
+  {
+    label: "Installer Workflows",
+    href: "/project-management",
+    description: "Manage records, status, documents, and handovers in one place.",
+  },
+];
+
+export const corePublicPaths = [
+  "/",
+  "/about",
+  "/features",
+  "/quote-generator",
+  "/seai-grant-workflow",
+  "/project-management",
+  "/ai-sales",
+  "/pricing",
+  "/free-website",
+  "/contact",
 ];
 
 export function getServicePage(slug: string) {
@@ -740,12 +825,5 @@ export function getLocationPage(slug: string) {
 }
 
 export function getIndexablePaths() {
-  return [
-    "/",
-    "/about",
-    "/quote",
-    ...servicePages.map((page) => `/${page.slug}`),
-    "/contact",
-    ...locationPages.map((page) => `/locations/${page.slug}`),
-  ];
+  return corePublicPaths;
 }

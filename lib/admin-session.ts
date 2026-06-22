@@ -1,7 +1,7 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { cookies } from "next/headers";
 
-const sessionCookieName = "emerald_admin_session";
+const sessionCookieName = "clada_admin_session";
 const sessionDurationMs = 12 * 60 * 60 * 1000;
 
 type AdminSessionPayload = {

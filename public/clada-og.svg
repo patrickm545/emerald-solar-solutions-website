@@ -1,0 +1,16 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Clada Systems</title>
+  <desc id="desc">Irish workflow automation software for renewable energy installers.</desc>
+  <rect width="1200" height="630" fill="#0B1F33"/>
+  <rect x="84" y="86" width="1032" height="458" rx="20" fill="#FFFFFF"/>
+  <rect x="132" y="138" width="112" height="112" rx="20" fill="#0B1F33"/>
+  <path d="M207 166C197 158 181 157 170 165C156 175 152 194 161 209C170 224 188 230 204 222" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round"/>
+  <path d="M186 194H229" stroke="#1F4D3A" stroke-width="12" stroke-linecap="round"/>
+  <path d="M218 176L232 194L218 212" stroke="#1F4D3A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="286" y="183" fill="#0B1F33" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-size="54" font-weight="700">Clada Systems</text>
+  <text x="286" y="232" fill="#1F4D3A" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-size="25" font-weight="700" letter-spacing="0.12em">SOLARGRANT PRO</text>
+  <text x="132" y="346" fill="#0B1F33" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-size="54" font-weight="700">Software Built for Renewable Energy Installers</text>
+  <text x="132" y="410" fill="#415466" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-size="28">Lead, grant, quotation and customer workflow automation</text>
+  <rect x="132" y="464" width="352" height="48" rx="8" fill="#F5F7F8" stroke="#D9E1E5"/>
+  <text x="156" y="497" fill="#1F4D3A" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">cladasystems.com</text>
+</svg>

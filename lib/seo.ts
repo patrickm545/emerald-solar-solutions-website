@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import {
-  homepageFaqs,
   servicePages,
   siteConfig,
   type FaqItem,
@@ -65,17 +64,17 @@ export function createOrganizationSchema() {
     "@type": "Organization",
     "@id": `${absoluteUrl("/")}#organization`,
     name: siteConfig.name,
-    alternateName: "Emerald Solar Solutions software platform",
+    alternateName: "SolarGRANT Pro software provider",
     url: absoluteUrl("/"),
-    logo: absoluteUrl("/emerald-logo-dark.png"),
-    image: absoluteUrl(siteConfig.business.photoUrl ?? "/emerald-logo-dark.png"),
+    logo: absoluteUrl("/clada-logo-dark.svg"),
+    image: absoluteUrl(siteConfig.business.photoUrl ?? siteConfig.defaultImage),
     description: siteConfig.description,
-    slogan: "AI-powered sales and project management software for solar installers.",
+    slogan: "Workflow automation software for renewable energy installers.",
     brand: {
       "@type": "Brand",
       name: siteConfig.name,
       url: absoluteUrl("/"),
-      logo: absoluteUrl("/emerald-logo-dark.png"),
+      logo: absoluteUrl("/clada-logo-dark.svg"),
     },
     sameAs: siteConfig.sameAs,
     areaServed: {
@@ -84,31 +83,29 @@ export function createOrganizationSchema() {
     },
     knowsAbout: [
       "solar installer software",
-      "software platform for solar installers",
-      "SaaS platform for solar installers",
-      "solar sales software",
-      "solar installer workflow software",
+      "renewable energy installer software",
+      "workflow automation software for installers",
+      "SolarGRANT Pro",
+      "lead management software",
+      "installer sales workflow software",
       "AI-assisted sales software",
-      "AI-assisted lead generation",
       "quote generation software",
-      "SEAI workflow software",
-      "solar project management software",
-      "project management software",
-      "homeowner onboarding software",
+      "grant workflow software",
+      "customer workflow software",
+      "application pack generation software",
+      "customer documentation software",
     ],
     makesOffer: [
       {
         "@type": "Offer",
-        name: "EUR500/month Solar Growth Software Package",
-        price: "500",
-        priceCurrency: "EUR",
+        name: "SolarGRANT Pro",
         availability: "https://schema.org/InStock",
         itemOffered: {
           "@type": "SoftwareApplication",
           "@id": `${absoluteUrl("/")}#software`,
-          name: siteConfig.name,
+          name: "SolarGRANT Pro",
           applicationCategory: "BusinessApplication",
-          applicationSubCategory: "Sales automation software",
+          applicationSubCategory: "Renewable energy installer workflow software",
           operatingSystem: "Web",
           description: siteConfig.description,
         },
@@ -146,12 +143,12 @@ export function createSoftwareApplicationSchema() {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "@id": `${absoluteUrl("/")}#software`,
-    name: siteConfig.name,
-    alternateName: "Emerald Solar Solutions SaaS platform",
+    name: "SolarGRANT Pro",
+    alternateName: "Clada Systems workflow automation platform",
     url: absoluteUrl("/"),
     applicationCategory: "BusinessApplication",
     applicationSubCategory:
-      "AI-assisted sales software, quote generation software, SEAI workflow software, and project management software",
+      "Lead, grant eligibility, quotation, CRM workflow, and customer documentation software",
     operatingSystem: "Web",
     description: siteConfig.description,
     brand: {
@@ -160,26 +157,24 @@ export function createSoftwareApplicationSchema() {
       url: absoluteUrl("/"),
     },
     featureList: [
-      "AI-assisted sales software",
-      "solar sales software",
-      "quote generation software",
-      "SEAI workflow software",
-      "project management software",
-      "solar installer workflow software",
       "lead capture software",
-      "homeowner onboarding software",
+      "grant eligibility checks",
+      "CRM workflow management",
+      "quote generation software",
+      "installer dashboard",
+      "AI-assisted sales follow-up",
+      "customer documentation",
+      "application pack generation",
     ],
     audience: {
       "@type": "BusinessAudience",
-      audienceType: "Solar installation companies in Ireland",
+      audienceType: "Renewable energy installation companies in Ireland",
     },
     offers: {
       "@type": "Offer",
-      name: "EUR500/month Solar Growth Software Package",
-      price: "500",
-      priceCurrency: "EUR",
-    description:
-        "AI-assisted sales software, quote generation software, SEAI workflow software, project management software, lead capture system, free professional website, and onboarding support.",
+      name: "SolarGRANT Pro",
+      description:
+        "Lead capture, grant eligibility checks, quote generation, customer workflow management, AI-assisted sales follow-up, customer documentation, and application pack generation.",
     },
     provider: {
       "@id": `${absoluteUrl("/")}#organization`,
@@ -207,7 +202,7 @@ export function createServiceSchema(service: ServicePageContent) {
     },
     audience: {
       "@type": "BusinessAudience",
-      audienceType: "Solar installation companies",
+      audienceType: "Renewable energy installation companies",
     },
   };
 }
@@ -216,12 +211,12 @@ export function createQuoteGeneratorServiceSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": `${absoluteUrl("/quote")}#service`,
-    name: "Solar Quote Generator Software for Installers",
-    serviceType: "Solar quote generator software",
+    "@id": `${absoluteUrl("/quote-generator")}#service`,
+    name: "SolarGRANT Pro Quote Workflow",
+    serviceType: "Quotation workflow software",
     description:
-      "Software that helps solar installers capture homeowner details, estimate system size and savings, pre-qualify leads, collect files, and prepare better sales calls.",
-    url: absoluteUrl("/quote"),
+      "Software that helps installers capture customer details, estimate system size and savings, pre-qualify leads, collect files, and prepare better quotation calls.",
+    url: absoluteUrl("/quote-generator"),
     provider: {
       "@id": `${absoluteUrl("/")}#organization`,
       name: siteConfig.name,
@@ -239,7 +234,7 @@ export function createLocationServiceSchema(location: LocationPageContent) {
     "@type": "Service",
     "@id": `${absoluteUrl(`/locations/${location.slug}`)}#service`,
     name: location.h1,
-    serviceType: "Solar installer software",
+    serviceType: "Renewable energy installer software",
     description: location.metaDescription,
     url: absoluteUrl(`/locations/${location.slug}`),
     provider: {
@@ -284,30 +279,29 @@ export function createBreadcrumbSchema(
 }
 
 export const homepageMetadata = createPageMetadata({
-  title: "AI Sales Software Platform for Solar Installers | Emerald Solar Solutions",
+  title: "Software Built for Renewable Energy Installers",
   description:
-    "Emerald Solar Solutions provides AI-assisted sales software, quote generation software, SEAI workflow software, project management software, and lead capture software for solar installers in Ireland.",
+    "Clada Systems is an Irish software company building workflow automation tools for renewable energy businesses, including SolarGRANT Pro for leads, grants, quotations, and customer workflows.",
   path: "/",
 });
 
 export const aboutPageMetadata = createPageMetadata({
-  title: "About Emerald Solar Solutions Software",
+  title: "About Clada Systems",
   description:
-    "Emerald Solar Solutions is an Irish software company building AI-assisted sales, quote generation, SEAI workflow, and project management tools for solar installation companies.",
+    "Clada Systems is an Irish software company focused on digital transformation within the renewable energy sector.",
   path: "/about",
 });
 
 export const quotePageMetadata = createPageMetadata({
-  title: "Solar Quote Generator Software for Installers | Emerald Solar Solutions",
+  title: "Quotation Workflow Software for Installers | Clada Systems",
   description:
-    "Solar quote generator software for installers. Capture homeowner details, estimate system size and savings, pre-qualify leads, collect files, and prepare better sales calls.",
-  path: "/quote",
+    "SolarGRANT Pro helps installers capture customer details, estimate system size and savings, pre-qualify leads, collect files, and prepare better quotation calls.",
+  path: "/quote-generator",
 });
 
 export const homepageSchemas = [
   createOrganizationSchema(),
   createSoftwareApplicationSchema(),
-  createFaqSchema(homepageFaqs),
 ];
 
 export function getCoreSoftwarePages() {
@@ -319,7 +313,7 @@ export function getCoreSoftwarePages() {
       "project-management",
       "ai-sales",
       "pricing",
-      "free-website-for-solar-installers",
+      "free-website",
     ].includes(page.slug),
   );
 }

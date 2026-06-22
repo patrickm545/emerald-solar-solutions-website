@@ -9,7 +9,7 @@ const contentSecurityPolicy = [
   "img-src 'self' data: blob: https:",
   "font-src 'self' data:",
   "media-src 'self' data: blob: https:",
-  "frame-src 'self'",
+  "frame-src 'self' https://www.loom.com https://loom.com",
   `connect-src 'self'${isDevelopment ? " ws: http: https:" : ""}`,
   "object-src 'none'",
   "base-uri 'self'",
@@ -43,10 +43,14 @@ const securityHeaders = [
     key: "X-DNS-Prefetch-Control",
     value: "off",
   },
-  {
-    key: "Strict-Transport-Security",
-    value: "max-age=63072000; includeSubDomains; preload",
-  },
+  ...(isDevelopment
+    ? []
+    : [
+        {
+          key: "Strict-Transport-Security",
+          value: "max-age=63072000; includeSubDomains; preload",
+        },
+      ]),
 ];
 
 const nextConfig: NextConfig = {
